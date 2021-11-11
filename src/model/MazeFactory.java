@@ -1,7 +1,9 @@
 package model;
 
+import model.door.Door;
+import model.room.Room;
+
 public interface MazeFactory {
-    void createMaze();
-    void createRoom();
-    void createDoor();
+    Room createRoom(int id);
+    Door createDoor(Room source,Room destination);
 }
