@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="900.0" styleClass="mainPane" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane fx:id="instructionsPane" layoutX="31.0" layoutY="39.0" prefHeight="696.0" prefWidth="435.0" style="-fx-background-color: #fff;" styleClass="box">
+         <children>
+            <ImageView fitHeight="75.0" fitWidth="73.0" layoutX="178.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/door1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="43.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/door2.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="312.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/door3.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="40.0" layoutY="140.0" prefHeight="112.0" prefWidth="354.0" text="There are 3 types of doors which decrease your energy every time you advance into a room. The silver door communicates with traditional rooms, the golden ones with pumps and the infernal ones with enchanted rooms." textAlignment="JUSTIFY" wrapText="true">
+               <font>
+                  <Font name="Comic Sans MS" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="176.0" layoutY="93.0" text="Doors">
+               <font>
+                  <Font name="Comic Sans MS" size="28.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="101.0" fitWidth="73.0" layoutX="46.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bomb.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="180.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/poison.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="316.0" layoutY="522.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/treasure.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="52.0" layoutY="436.0" prefHeight="73.0" prefWidth="354.0" text="There are three types of rooms omitting the traditional one (without any type of added)" textAlignment="JUSTIFY" wrapText="true">
+               <font>
+                  <Font name="Comic Sans MS" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="177.0" layoutY="397.0" text="Rooms">
+               <font>
+                  <Font name="Comic Sans MS" size="28.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="41.0" layoutY="14.0" prefHeight="73.0" prefWidth="354.0" text="Hellish Maze is a video game that consists of finding the shortest path between different types of rooms to find the hidden treasure." textAlignment="JUSTIFY" wrapText="true">
+               <font>
+                  <Font name="Comic Sans MS" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="34.0" layoutY="617.0" text="Bombed Room">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="166.0" layoutY="617.0" text="Haunted Room">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="300.0" layoutY="617.0" text="Treasure Room">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="170.0" layoutY="356.0" text="Golden Door">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="41.0" layoutY="356.0" text="Silver Door">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="301.0" layoutY="356.0" text="Infernal Door">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="93.0" layoutY="652.0" onAction="#showWelcome" prefHeight="39.0" prefWidth="250.0" ripplerFill="#a10404" text="Back">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+      <Pane layoutX="500.0" prefHeight="750.0" prefWidth="400.0" styleClass="right-pane">
+         <children>
+            <ImageView fitHeight="227.0" fitWidth="385.0" layoutX="23.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/virtual.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="initPane" layoutX="31.0" layoutY="39.0" prefHeight="696.0" prefWidth="435.0" styleClass="box" stylesheets="@../styles/main.css">
+         <children>
+            <Label layoutX="40.0" layoutY="228.0" text="HELLISH MAZE">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="45.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="64.0" fitWidth="68.0" layoutX="186.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/hot.png" />
+               </image>
+            </ImageView>
+            <JFXButton layoutX="51.0" layoutY="369.0" prefHeight="62.0" prefWidth="334.0" styleClass="btn-flash" text="Play">
+               <font>
+                  <Font name="Comic Sans MS" size="30.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="51.0" layoutY="500.0" onAction="#showInstructions" prefHeight="62.0" prefWidth="334.0" styleClass="btn-flash" text="Instructions">
+               <font>
+                  <Font name="Comic Sans MS" size="30.0" />
+               </font>
+            </JFXButton>
+         </children></Pane>
+   </children>
+</Pane>

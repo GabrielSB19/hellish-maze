@@ -1,0 +1,20 @@
+.mainPane{
+    -fx-background-radius: 40 40 40 40;
+    -fx-background-color: white; 
+}
+.box{
+    -fx-effect: dropshadow( gaussian, rgba(235, 235, 235, 0.4), 90, 0.8, 0.0, 0.0 );
+    -fx-background-radius: 20;
+    -fx-background-color: white;
+}
+.right-pane{
+    -fx-background-color: linear-gradient(to left,rgb(168, 3, 3) ,#e28a8a);
+    -fx-background-radius: 0 40 40 0;
+}
+.btn-flash{
+    -fx-background-color : #fff ;
+    -fx-background-radius: 20;
+    -fx-font-family: "Comic Sans MS";
+    -fx-effect: dropshadow( gaussian, rgba(235, 235, 235, 0.4), 20, 0.8, 0.0, 0.0 );
+    -fx-font-size: 30px;
+}
