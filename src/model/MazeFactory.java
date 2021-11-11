@@ -1,7 +1,6 @@
 package model;
 
 public interface MazeFactory {
-    void createMaze();
-    void createRoom();
-    void createDoor();
+    Room createRoom(int id);
+    Door createDoor(Room source,Room destination);
 }

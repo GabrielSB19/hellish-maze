@@ -1,5 +1,9 @@
 package model;
 
-public class Room {
-    
+import java.util.LinkedList;
+
+public interface Room {
+    int getId();
+    LinkedList<Door> getDoors();
+    boolean hasTreasure();
 }
