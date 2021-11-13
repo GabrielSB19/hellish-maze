@@ -11,29 +11,11 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="900.0" styleClass="mainPane" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane fx:id="rpane2" layoutX="500.0" prefHeight="750.0" prefWidth="400.0" styleClass="right-pane3">
-         <children>
-            <ImageView fitHeight="255.0" fitWidth="313.0" layoutX="61.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/filter.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
-      <Pane fx:id="rpane1" layoutX="500.0" prefHeight="750.0" prefWidth="400.0" styleClass="right-pane2">
-         <children>
-            <ImageView fitHeight="227.0" fitWidth="385.0" layoutX="47.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/control_panel.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
       <Pane fx:id="gamePane" layoutX="31.0" layoutY="38.0" prefHeight="696.0" prefWidth="435.0" styleClass="box" stylesheets="@../styles/main.css">
          <children>
-            <Label layoutX="51.0" layoutY="332.0" text="Can you beat us?">
+            <Label layoutX="63.0" layoutY="333.0" text="Can you beat us?">
                <font>
-                  <Font name="Comic Sans MS Bold" size="40.0" />
+                  <Font name="Comic Sans MS" size="40.0" />
                </font>
             </Label>
             <ImageView fitHeight="64.0" fitWidth="68.0" layoutX="186.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
@@ -56,9 +38,9 @@
                   <Font name="Comic Sans MS" size="30.0" />
                </font>
             </JFXButton>
-            <Label layoutX="21.0" layoutY="101.0" text="Chooose your avatar">
+            <Label layoutX="29.0" layoutY="113.0" text="Chooose your avatar">
                <font>
-                  <Font name="Comic Sans MS Bold" size="40.0" />
+                  <Font name="Comic Sans MS" size="40.0" />
                </font>
             </Label>
             <ImageView fitHeight="64.0" fitWidth="68.0" layoutX="35.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
@@ -205,11 +187,29 @@
             </ImageView>
          </children>
       </Pane>
+      <Pane fx:id="rpane2" layoutX="500.0" prefHeight="750.0" prefWidth="400.0" styleClass="right-pane3">
+         <children>
+            <ImageView fitHeight="255.0" fitWidth="313.0" layoutX="61.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/filter.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="rpane1" layoutX="500.0" prefHeight="750.0" prefWidth="400.0" styleClass="right-pane2">
+         <children>
+            <ImageView fitHeight="227.0" fitWidth="385.0" layoutX="47.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/control_panel.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
       <Pane fx:id="initPane" layoutX="31.0" layoutY="39.0" prefHeight="696.0" prefWidth="435.0" styleClass="box" stylesheets="@../styles/main.css">
          <children>
             <Label layoutX="40.0" layoutY="228.0" text="HELLISH MAZE">
                <font>
-                  <Font name="Comic Sans MS Bold" size="45.0" />
+                  <Font name="Comic Sans MS" size="45.0" />
                </font>
             </Label>
             <ImageView fitHeight="64.0" fitWidth="68.0" layoutX="186.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
