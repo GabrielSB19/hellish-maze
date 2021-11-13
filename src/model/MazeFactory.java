@@ -5,5 +5,5 @@ import model.room.Room;
 
 public interface MazeFactory {
     Room createRoom(int id);
-    Door createDoor(Room source,Room destination);
+    Door createDoor();
 }
