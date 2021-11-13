@@ -8,11 +8,11 @@ public class HardFactory implements MazeFactory {
 
     @Override
     public Room createRoom(int id) {
-        return null;
+        return new EnchantedRoom(id);
     }
 
     @Override
-    public Door createDoor(Room source,Room destination) {
-        return new GoldenDoor(source, destination);
+    public Door createDoor() {
+        return new GoldenDoor();
     }
 }

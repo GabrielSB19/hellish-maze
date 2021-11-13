@@ -13,8 +13,8 @@ public class EasyFactory implements MazeFactory {
     }
 
     @Override
-    public Door createDoor(Room source, Room destination) {
-        return new SilverDoor(source, destination);
+    public Door createDoor() {
+        return new SilverDoor();
     }
     
 }

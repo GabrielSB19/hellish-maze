@@ -10,16 +10,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import model.Maze;
 import routes.Route;
 
 public class MazeController {
 
-    //Mainpane
+    // Mainpane
     @FXML
     private Pane mainPane;
 
@@ -29,7 +29,7 @@ public class MazeController {
     @FXML
     private Circle btnMinimize;
 
-    //Menu
+    // Menu
     @FXML
     private Pane rpane;
 
@@ -62,6 +62,11 @@ public class MazeController {
 
     @FXML
     private JFXRadioButton rSamurai;
+    private Maze maze;
+
+    public MazeController() {
+        maze = new Maze();
+    }
 
     @FXML
     public void back(MouseEvent event) {
@@ -100,7 +105,7 @@ public class MazeController {
     @FXML
     public void medium(ActionEvent event) {
 
-    } 
+    }
 
     @FXML
     public void handleMouseClick(MouseEvent event) {
@@ -129,10 +134,10 @@ public class MazeController {
 
     private Object setController(Route route) {
         switch (route) {
-            case WELCOME:
-                return this;
-            default:
-                return null;
+        case WELCOME:
+            return this;
+        default:
+            return null;
         }
     }
 }
