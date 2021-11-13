@@ -2,11 +2,15 @@ package controller;
 
 import java.io.IOException;
 
+import com.jfoenix.controls.JFXRadioButton;
+
 import animatefx.animation.FadeIn;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
@@ -15,6 +19,7 @@ import routes.Route;
 
 public class MazeController {
 
+    //Mainpane
     @FXML
     private Pane mainPane;
 
@@ -24,11 +29,78 @@ public class MazeController {
     @FXML
     private Circle btnMinimize;
 
+    //Menu
+    @FXML
+    private Pane rpane;
+
+    @FXML
+    private Pane rpane2;
+
+    @FXML
+    private Pane rpane1;
+
     @FXML
     private Pane instructionsPane;
 
     @FXML
     private Pane initPane;
+
+    @FXML
+    private Pane gamePane;
+
+    @FXML
+    private ToggleGroup avatar;
+
+    @FXML
+    private JFXRadioButton rAlchemy;
+
+    @FXML
+    private JFXRadioButton rBarbarian;
+
+    @FXML
+    private JFXRadioButton rDruid;
+
+    @FXML
+    private JFXRadioButton rSamurai;
+
+    @FXML
+    public void back(MouseEvent event) {
+        new FadeIn(initPane).play();
+        initPane.toFront();
+        new FadeIn(rpane).play();
+        rpane.toFront();
+    }
+
+    @FXML
+    public void showInstructions(ActionEvent event) {
+        new FadeIn(instructionsPane).play();
+        instructionsPane.toFront();
+        new FadeIn(rpane2).play();
+        rpane2.toFront();
+    }
+
+    @FXML
+    public void play(ActionEvent event) {
+        new FadeIn(gamePane).play();
+        gamePane.toFront();
+        new FadeIn(rpane1).play();
+        rpane1.toFront();
+    }
+
+    @FXML
+    public void easy(ActionEvent event) {
+
+    }
+
+    @FXML
+    public void hard(ActionEvent event) {
+
+    }
+
+    @FXML
+    public void medium(ActionEvent event) {
+
+    } 
 
     @FXML
     public void handleMouseClick(MouseEvent event) {
@@ -41,18 +113,6 @@ public class MazeController {
 
     private Stage getWindow() {
         return (Stage) mainPane.getScene().getWindow();
-    }
-
-    @FXML
-    public void showInstructions(ActionEvent event) {
-        new FadeIn(instructionsPane).play();
-        instructionsPane.toFront();
-    }
-
-    @FXML
-    public void showWelcome(ActionEvent event) {
-        new FadeIn(initPane).play();
-        initPane.toFront();
     }
 
     public void renderScreen(Route route) {
