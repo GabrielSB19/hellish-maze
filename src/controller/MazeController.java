@@ -15,6 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import model.Maze;
+import model.Player;
 import routes.Route;
 
 public class MazeController {
@@ -124,15 +125,15 @@ public class MazeController {
         }
     }
 
-    private int hasAvatar() {
+    private Player hasAvatar() {
         if (avatar.getSelectedToggle().equals(rAlchemy)) {
-            return 1;
+            return maze.newPlayer(1);
         } else if (avatar.getSelectedToggle().equals(rBarbarian)) {
-            return 2;
+            return maze.newPlayer(2);
         } else if (avatar.getSelectedToggle().equals(rDruid)) {
-            return 3;
+            return maze.newPlayer(3);
         } else {
-            return 4;
+            return maze.newPlayer(4);
         }
     }
 

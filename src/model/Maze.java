@@ -4,6 +4,7 @@ import collection.IGraph;
 import collection.undirectedGraph.UndirectedGraph;
 import model.door.Door;
 import model.room.Room;
+import model.room.TraditionalRoom;
 
 public class Maze {
     private MazeFactory[] factories;
@@ -32,6 +33,15 @@ public class Maze {
     public void addDoor(Room source, Room destination, int type) {
         int roomType = (int) ((Math.random() * type));
         graph.addEdge(factories[roomType].createDoor(), source, destination);
+    }
+
+    public void setTreasure(int id) {
+        TraditionalRoom tRoom = (TraditionalRoom) graph.getVertex(id).getData();
+        tRoom.setTreasure(true);
+    }
+
+    public Player newPlayer(int avatar){
+        return new Player(avatar);
     }
 
     public IGraph<Room, Door> getGraph() {

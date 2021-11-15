@@ -1,7 +1,5 @@
 package collection.undirectedGraph;
 
-import com.sun.xml.internal.bind.v2.runtime.Location;
-
 import collection.IEdge;
 
 public class Edge<V, E> implements IEdge<V,E> {

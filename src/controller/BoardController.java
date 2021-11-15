@@ -1,9 +1,11 @@
 package controller;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -11,6 +13,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import model.Maze;
+import model.Player;
 import model.door.Door;
 import model.door.GoldenDoor;
 import model.door.SilverDoor;
@@ -28,42 +31,60 @@ public class BoardController {
     private ImageView hasKey;
 
     private MazeController mController;
-    private int avatar;
+    private Player player;
+    private int endPoint;
 
     private final int EASY_V = 9;
     private final int MEDIUM_V = 16;
     private final int HARD_V = 25;
 
-    public BoardController(MazeController mController, int avatar) {
+    public BoardController(MazeController mController, Player player) {
         this.mController = mController;
-        this.avatar = avatar;
+        this.player = player;
     }
 
     public void easyBoard() {
+        endPoint = 3;
         mController.getMaze().createGraph(EASY_V);
         createRooms(EASY_V, 1);
-        createDoors((int) Math.sqrt(EASY_V), 1);
+        createDoors(endPoint, 1);
         createBoard(EASY_V, "green");
+        setPlayer();
     }
 
     public void mediumBoard() {
+        endPoint = 4;
         mController.getMaze().createGraph(MEDIUM_V);
         createRooms(MEDIUM_V, 2);
-        createDoors((int) Math.sqrt(MEDIUM_V), 2);
-        createBoard(MEDIUM_V, "yellow");
+        createDoors(endPoint, 2);
+        createBoard(MEDIUM_V, "blue");
+        setPlayer();
     }
 
     public void hardBoard() {
+        endPoint = 5;
         mController.getMaze().createGraph(HARD_V);
         createRooms(HARD_V, 3);
-        createDoors((int) Math.sqrt(HARD_V), 3);
+        createDoors(endPoint, 3);
         createBoard(HARD_V, "red");
+        setPlayer();
+    }
+
+    private void setPlayer() {
+        ImageView avatar = new ImageView(new Image(Route.AVATAR.getRoute() + player.getAvatar() + ".png"));
+        avatar.setFitHeight(50);
+        avatar.setFitWidth(50);
+        GridPane temp = (GridPane) board.getChildren().get(player.getIdRoom());
+        temp.add(avatar, 1, 1);
+        GridPane.setConstraints(avatar, 1, 1, 2, 2, HPos.CENTER, VPos.CENTER);
     }
 
     private void createRooms(int rooms, int type) {
-        for (int i = 0; i < rooms; i++) {
+        for (int i = 0; i < rooms - 1; i++) {
             mController.getMaze().addRoom(i, type);
         }
+        mController.getMaze().addRoom(rooms - 1, 1);
+        mController.getMaze().setTreasure(rooms - 1);
     }
 
     private void createDoors(int render, int type) {
@@ -121,6 +142,7 @@ public class BoardController {
         board.setHgap(10);
         board.setVgap(10);
         board.setPadding(new Insets(10, 10, 10, 10));
+        board.requestFocus();
     }
 
     private int[] getPosition(int s, int d, int props) {
@@ -200,22 +222,52 @@ public class BoardController {
 
     @FXML
     public void movement(KeyEvent event) {
+        int recentId = player.getIdRoom();
+        GridPane temp = (GridPane) board.getChildren().get(recentId);
         switch (event.getCode()) {
         case UP:
-            System.out.println("up");
+            if (getNodeByRowColumnIndex(0, 2, temp) != null) {
+                player.setIdRoom(recentId - endPoint);
+                temp.getChildren().remove(getNodeByRowColumnIndex(1, 1, temp));
+                setPlayer();
+            }
             break;
         case DOWN:
-            System.out.println("down");
+            if (getNodeByRowColumnIndex(3, 2, temp) != null) {
+                player.setIdRoom(recentId + endPoint);
+                temp.getChildren().remove(getNodeByRowColumnIndex(1, 1, temp));
+                setPlayer();
+            }
             break;
         case RIGHT:
-            System.out.println("r");
+            if (getNodeByRowColumnIndex(2, 3, temp) != null) {
+                player.setIdRoom(recentId + 1);
+                temp.getChildren().remove(getNodeByRowColumnIndex(1, 1, temp));
+                setPlayer();
+            }
             break;
         case LEFT:
-            System.out.println("l");
+            if (getNodeByRowColumnIndex(2, 0, temp) != null) {
+                player.setIdRoom(recentId - 1);
+                temp.getChildren().remove(getNodeByRowColumnIndex(1, 1, temp));
+                setPlayer();
+            }
             break;
         default:
             break;
         }
 
+    }
+
+    private Node getNodeByRowColumnIndex(final int row, final int column, GridPane gridPane) {
+        Node result = null;
+        ObservableList<Node> childrens = gridPane.getChildren();
+        for (Node node : childrens) {
+            if (GridPane.getRowIndex(node) == row && GridPane.getColumnIndex(node) == column) {
+                result = node;
+                break;
+            }
+        }
+        return result;
     }
 }

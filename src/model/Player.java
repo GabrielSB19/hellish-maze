@@ -1,16 +1,26 @@
 package model;
 
 public class Player {
+    private int avatar;
     private boolean winner;
     private int idRoom;
     private int tokens;
     private boolean hasKey;
 
-    public Player() {
+    public Player(int avatar) {
+        this.avatar = avatar;
         winner = false;
         idRoom = 0;
         tokens = 0;
         hasKey = false;
+    }
+
+    public int getAvatar() {
+        return this.avatar;
+    }
+
+    public void setAvatar(int avatar) {
+        this.avatar = avatar;
     }
 
     public boolean isWinner() {
