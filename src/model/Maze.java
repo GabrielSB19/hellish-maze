@@ -1,43 +1,49 @@
 package model;
 
+import collection.IGraph;
+import collection.undirectedGraph.UndirectedGraph;
+import model.door.Door;
+import model.room.Room;
+
 public class Maze {
     private MazeFactory[] factories;
-    private final int EASY_V = 9,EASY_E = 12;
-    private final int MEDIUM_V = 16,MEDIUM_E = 24;
-    private final int HARD_V = 25,HARD_E = 40;
+    private IGraph<Room, Door> graph;
 
-    public Maze(){
+    public Maze() {
         factories = new MazeFactory[3];
         initfactories();
     }
 
-    private void initfactories(){
-       factories[0] = new EasyFactory();
-       factories[1] = new MediumFactory();
-       factories[2] = new HardFactory();
+    private void initfactories() {
+        factories[0] = new EasyFactory();
+        factories[1] = new MediumFactory();
+        factories[2] = new HardFactory();
     }
 
-    public void easy(){
-      for (int i = 0; i < EASY_V; i++) {
-          for (int j = 0; j < EASY_V; j++) {
-              
-          }
-      }
+    public void createGraph(int amount) {
+        graph = new UndirectedGraph<>(amount);
     }
 
-    public void medium(){
+    public void medium() {
 
     }
 
-    public void hard(){
+    public void hard() {
 
     }
 
-    private void createRooms(){
-
+    public void addRoom(int id) {
+        int roomType = (int) ((Math.random() * 2));
+        graph.addVextex(factories[roomType].createRoom(id));
     }
 
-    private void createDoors(){
-        
+    public void addDoor(Room source, Room destination) {
+        int roomType = (int) ((Math.random() * 2));
+        graph.addEdge(factories[roomType].createDoor(), source, destination);
     }
+
+    public IGraph<Room,Door> getGraph() {
+        return this.graph;
+    } 
+
 }

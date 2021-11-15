@@ -63,9 +63,14 @@ public class MazeController {
     @FXML
     private JFXRadioButton rSamurai;
     private Maze maze;
+    private BoardController bController;
 
     public MazeController() {
         maze = new Maze();
+    }
+
+    public Maze getMaze(){
+        return maze;
     }
 
     @FXML
@@ -94,18 +99,24 @@ public class MazeController {
 
     @FXML
     public void easy(ActionEvent event) {
-
-    }
-
-    @FXML
-    public void hard(ActionEvent event) {
-
+        bController = new BoardController(this);
+        renderScreen(Route.BOARD);
+        bController.easyBoard();
     }
 
     @FXML
     public void medium(ActionEvent event) {
-
+        bController = new BoardController(this);
+        renderScreen(Route.BOARD);
+        bController.mediumBoard();
     }
+
+    @FXML
+    public void hard(ActionEvent event) {
+        bController = new BoardController(this);
+        renderScreen(Route.BOARD);
+        bController.hardBoard();
+    }   
 
     @FXML
     public void handleMouseClick(MouseEvent event) {
@@ -136,6 +147,8 @@ public class MazeController {
         switch (route) {
         case WELCOME:
             return this;
+        case BOARD:
+            return bController;
         default:
             return null;
         }

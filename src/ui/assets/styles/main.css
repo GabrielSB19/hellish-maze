@@ -26,3 +26,6 @@
     -fx-effect: dropshadow( gaussian, rgba(235, 235, 235, 0.4), 20, 0.8, 0.0, 0.0 );
     -fx-font-size: 30px;
 }
+.label{
+    -fx-font-family: "Comic Sans MS";
+}

@@ -1,25 +1,27 @@
 package collection.directedGraph;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Vertex<V, E> {
     private V data;
-    private LinkedList<Edge<V, E>> edges;
+    private List<Edge<V, E>> edges;
 
     public Vertex(V data) {
         this.data = data;
+        edges = new ArrayList<>();
     }
 
     public V getData() {
         return this.data;
     }
 
-    public LinkedList<Edge<V, E>> getEdges() {
+    public List<Edge<V, E>> getEdges() {
         return this.edges;
     }
 
-    public void setEdges(LinkedList<Edge<V, E>> edges) {
-        this.edges = edges;
+    public void addEdge(Edge<V, E> edge) {
+        edges.add(edge);
     }
 
 }
