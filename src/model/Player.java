@@ -1,28 +1,24 @@
 package model;
 
 public class Player {
-    private boolean isWinner;
+    private boolean winner;
     private int idRoom;
     private int tokens;
     private boolean hasKey;
 
     public Player() {
-        isWinner = false;
+        winner = false;
         idRoom = 0;
         tokens = 0;
         hasKey = false;
     }
 
-    public boolean isIsWinner() {
-        return this.isWinner;
+    public boolean isWinner() {
+        return this.winner;
     }
 
-    public boolean getIsWinner() {
-        return this.isWinner;
-    }
-
-    public void setIsWinner(boolean isWinner) {
-        this.isWinner = isWinner;
+    public void setWinner(boolean winner) {
+        this.winner = winner;
     }
 
     public int getIdRoom() {
@@ -42,10 +38,6 @@ public class Player {
     }
 
     public boolean isHasKey() {
-        return this.hasKey;
-    }
-
-    public boolean getHasKey() {
         return this.hasKey;
     }
 

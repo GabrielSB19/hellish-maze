@@ -24,18 +24,18 @@ public class Maze {
         graph = new UndirectedGraph<>(amount);
     }
 
-    public void addRoom(int id) {
-        int roomType = (int) ((Math.random() * 3));
+    public void addRoom(int id, int type) {
+        int roomType = (int) ((Math.random() * type));
         graph.addVextex(factories[roomType].createRoom(id));
     }
 
-    public void addDoor(Room source, Room destination) {
-        int roomType = (int) ((Math.random() * 3));
+    public void addDoor(Room source, Room destination, int type) {
+        int roomType = (int) ((Math.random() * type));
         graph.addEdge(factories[roomType].createDoor(), source, destination);
     }
 
-    public IGraph<Room,Door> getGraph() {
+    public IGraph<Room, Door> getGraph() {
         return this.graph;
-    } 
+    }
 
 }

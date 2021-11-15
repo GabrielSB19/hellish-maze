@@ -1,14 +1,13 @@
 package model.room;
 
-import java.util.Random;
 
 public class KeyRoom extends Room {
 
-    private boolean hasKey;
+    private boolean key;
 
     public KeyRoom(int id) {
         super(id);
-        hasKey = new Random().nextBoolean();
+        key = true;
     }
 
     @Override
@@ -16,8 +15,8 @@ public class KeyRoom extends Room {
         return id;
     }
 
-    public boolean hasKey() {
-        return hasKey;
+    public boolean getKey() {
+        return key;
     }
 
 }
