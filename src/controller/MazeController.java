@@ -69,7 +69,7 @@ public class MazeController {
         maze = new Maze();
     }
 
-    public Maze getMaze(){
+    public Maze getMaze() {
         return maze;
     }
 
@@ -99,24 +99,42 @@ public class MazeController {
 
     @FXML
     public void easy(ActionEvent event) {
-        bController = new BoardController(this);
-        renderScreen(Route.BOARD);
-        bController.easyBoard();
+        if (avatar.getSelectedToggle() != null) {
+            bController = new BoardController(this, hasAvatar());
+            renderScreen(Route.BOARD);
+            bController.easyBoard();
+        }
     }
 
     @FXML
     public void medium(ActionEvent event) {
-        bController = new BoardController(this);
-        renderScreen(Route.BOARD);
-        bController.mediumBoard();
+        if (avatar.getSelectedToggle() != null) {
+            bController = new BoardController(this, hasAvatar());
+            renderScreen(Route.BOARD);
+            bController.mediumBoard();
+        }
     }
 
     @FXML
     public void hard(ActionEvent event) {
-        bController = new BoardController(this);
-        renderScreen(Route.BOARD);
-        bController.hardBoard();
-    }   
+        if (avatar.getSelectedToggle() != null) {
+            bController = new BoardController(this, hasAvatar());
+            renderScreen(Route.BOARD);
+            bController.hardBoard();
+        }
+    }
+
+    private int hasAvatar() {
+        if (avatar.getSelectedToggle().equals(rAlchemy)) {
+            return 1;
+        } else if (avatar.getSelectedToggle().equals(rBarbarian)) {
+            return 2;
+        } else if (avatar.getSelectedToggle().equals(rDruid)) {
+            return 3;
+        } else {
+            return 4;
+        }
+    }
 
     @FXML
     public void handleMouseClick(MouseEvent event) {

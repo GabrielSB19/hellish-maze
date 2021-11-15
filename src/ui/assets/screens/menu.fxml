@@ -45,22 +45,22 @@
             </Label>
             <ImageView fitHeight="64.0" fitWidth="68.0" layoutX="35.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/avatar/alchemy.png" />
+                  <Image url="@../images/avatar/1.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="64.0" fitWidth="68.0" layoutX="132.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/avatar/barbarian.png" />
+                  <Image url="@../images/avatar/2.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="64.0" fitWidth="68.0" layoutX="236.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/avatar/druid.png" />
+                  <Image url="@../images/avatar/3.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="64.0" fitWidth="68.0" layoutX="323.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/avatar/samurai.png" />
+                  <Image url="@../images/avatar/4.png" />
                </image>
             </ImageView>
             <JFXRadioButton fx:id="rAlchemy" layoutX="35.0" layoutY="272.0" text="Alchemy">

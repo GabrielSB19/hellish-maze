@@ -10,4 +10,5 @@ public class InfernalDoor extends Door {
     public int getToken() {
         return token;
     }
+
 }

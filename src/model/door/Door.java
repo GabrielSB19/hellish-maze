@@ -6,5 +6,5 @@ public abstract class Door {
     protected Door(){
     }
 
-    abstract int getToken();
+    public abstract int getToken();
 }

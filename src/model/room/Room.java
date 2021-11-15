@@ -7,6 +7,6 @@ public abstract class Room {
         this.id = id;
     }
 
-    abstract int getId();
+    public abstract int getId();
 
 }

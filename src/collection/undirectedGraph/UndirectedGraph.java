@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import collection.IGraph;
+import collection.IVertex;
 
 public class UndirectedGraph<V, E> implements IGraph<V, E> {
     private int[][] adjacencyMatrix;
@@ -50,8 +51,8 @@ public class UndirectedGraph<V, E> implements IGraph<V, E> {
     }
 
     @Override
-    public V getVertex(int id) {
-        return vertex.get(id).getData();
+    public IVertex<V,E> getVertex(int id) {
+        return vertex.get(id);
     }
 
 }

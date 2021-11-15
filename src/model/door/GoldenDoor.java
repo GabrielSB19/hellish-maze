@@ -10,5 +10,4 @@ public class GoldenDoor extends Door {
     public int getToken() {
         return token;
     }
-
 }
