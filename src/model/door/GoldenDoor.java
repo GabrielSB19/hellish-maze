@@ -3,7 +3,7 @@ package model.door;
 public class GoldenDoor extends Door {
 
     public GoldenDoor() {
-        token = -1;
+        token = 0;
     }
 
     @Override

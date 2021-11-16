@@ -3,7 +3,7 @@ package model.door;
 public class SilverDoor extends Door {
 
     public SilverDoor() {
-        token = 1;
+        token = (int) (Math.random() * (3))+1;
     }
 
     @Override

@@ -3,7 +3,7 @@ package model.door;
 public class InfernalDoor extends Door {
 
     public InfernalDoor() {
-        token = (int) ((Math.random() * (5 - 2 + 1) + 2));
+        token = (int) ((Math.random() * (8 - 4 + 1) + 4));
     }
 
     @Override
