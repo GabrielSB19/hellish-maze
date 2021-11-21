@@ -1,5 +1,7 @@
 package collection;
 
+import java.util.List;
+
 public interface IGraph<V, E> {
     void addEdge(E edge, V source, V destination);
 
@@ -11,7 +13,9 @@ public interface IGraph<V, E> {
 
     void fillMatrix(int i, int j, int token);
 
-    int[] dijkstra(int source);
+    int dijkstra(int source);
 
     int[][] floydWarshall();
+
+    List<Integer> getPath(int[] prev);
 }

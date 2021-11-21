@@ -55,4 +55,9 @@ public class Maze {
         return this.graph;
     }
 
+    public int minimumPath(int start) {
+        graph.dijkstra(start);
+        return 0;
+    }
+
 }

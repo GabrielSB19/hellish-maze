@@ -7,6 +7,7 @@ public class UndirectedGraph<V, E> extends Graph<V, E> {
     public UndirectedGraph(int vertex) {
         adjacencyMatrix = new Integer[vertex][vertex];
         this.vertex = new ArrayList<>();
+        prev = new int[vertex];
         initMatrix();
     }
 

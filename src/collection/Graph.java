@@ -5,6 +5,7 @@ import java.util.*;
 public abstract class Graph<V, E> implements IGraph<V, E> {
     protected Integer[][] adjacencyMatrix;
     protected List<Vertex<V, E>> vertex;
+    protected int[] prev;
 
     @Override
     public abstract void addEdge(E edge, V source, V destination);
@@ -47,11 +48,10 @@ public abstract class Graph<V, E> implements IGraph<V, E> {
     }
 
     @Override
-    public int[] dijkstra(int start) {
+    public int dijkstra(int start) {
 
         int[] distance = new int[vertex.size()];
         distance[start] = 0;
-        int[] prev = new int[vertex.size()];
 
         Queue<Integer> queue = new PriorityQueue<Integer>();
 
@@ -68,7 +68,7 @@ public abstract class Graph<V, E> implements IGraph<V, E> {
             int u = queue.poll();
 
             for (int i = 0; i < vertex.size(); i++) {
-                if (adjacencyMatrix[u][i] != 0 && adjacencyMatrix[u][i] != null) {
+                if (adjacencyMatrix[u][i] != null && adjacencyMatrix[u][i] != 0) {
                     int alt = distance[u] + adjacencyMatrix[u][i];
 
                     if (alt < distance[i]) {
@@ -79,9 +79,29 @@ public abstract class Graph<V, E> implements IGraph<V, E> {
                 }
             }
         }
-        System.out.println(Arrays.toString(distance));
-        System.out.println(Arrays.toString(prev));
-        return distance;
+
+        return distance[vertex.size() - 1];
+    }
+
+    @Override
+    public List<Integer> getPath(int[] prev) {
+        List<Integer> path = new ArrayList<>();
+        int c = 0;
+        for (int i = prev.length - 1; i >= 0; i--) {
+            if (prev[i] != 0) {
+                if (c == 0) {
+                    path.add(i);
+                    path.add(prev[i]);
+                    c = prev[i];
+                } else if (c == i) {
+                    path.add(prev[i]);
+                    c = prev[i];
+                }
+            }
+
+        }
+        Collections.reverse(path);
+        return path;
     }
 
     @Override

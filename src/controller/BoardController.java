@@ -147,6 +147,8 @@ public class BoardController {
         board.setVgap(10);
         board.setPadding(new Insets(10, 10, 10, 10));
         board.requestFocus();
+
+        mController.getMaze().minimumPath(0);
     }
 
     private int[] getPosition(int s, int d, int props) {
@@ -277,11 +279,17 @@ public class BoardController {
         Node result = null;
         ObservableList<Node> childrens = gridPane.getChildren();
         for (Node node : childrens) {
-            if (!(node instanceof Text) && GridPane.getRowIndex(node) == row && GridPane.getColumnIndex(node) == column) {
+            if (!(node instanceof Text) && GridPane.getRowIndex(node) == row
+                    && GridPane.getColumnIndex(node) == column) {
                 result = node;
                 break;
             }
         }
         return result;
     }
+
+    private void setTokens() {
+
+    }
+
 }
