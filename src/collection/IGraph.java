@@ -6,4 +6,6 @@ public interface IGraph<V,E> {
     IVertex<V,E> getVertex(int id);
     int[] dijkstra(int source);
     int[][] floydWarshall();
+    void prim();
+    void kruskal();
 }

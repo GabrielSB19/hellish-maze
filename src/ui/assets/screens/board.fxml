@@ -10,12 +10,12 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="900.0" styleClass="mainPane" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="52.0" fitWidth="59.0" layoutX="639.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="32.0" fitWidth="36.0" layoutX="703.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/tokens.png" />
+            <Image url="@../images/cryptocurrency.png" />
          </image>
       </ImageView>
-      <Label fx:id="lblTokens" layoutX="714.0" layoutY="24.0" text="13">
+      <Label fx:id="lblTokens" layoutX="759.0" layoutY="7.0" text="13">
          <font>
             <Font name="Comic Sans MS" size="22.0" />
          </font>
@@ -25,12 +25,12 @@
             <Image url="@../images/keyR.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="59.0" fitWidth="108.0" layoutX="423.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="52.0" fitWidth="36.0" layoutX="423.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/maze.png" />
          </image>
       </ImageView>
-      <GridPane fx:id="board" alignment="CENTER" layoutX="14.0" layoutY="76.0" onKeyPressed="#movement" prefHeight="666.0" prefWidth="877.0">
+      <GridPane fx:id="board" alignment="CENTER" layoutX="7.0" layoutY="48.0" onKeyPressed="#movement" prefHeight="694.0" prefWidth="884.0">
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>

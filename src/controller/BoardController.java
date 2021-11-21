@@ -75,8 +75,8 @@ public class BoardController {
 
     private void setPlayer() {
         ImageView avatar = new ImageView(new Image(Route.AVATAR.getRoute() + player.getAvatar() + ".png"));
-        avatar.setFitHeight(50);
-        avatar.setFitWidth(50);
+        avatar.setFitHeight(40);
+        avatar.setFitWidth(40);
         GridPane temp = (GridPane) board.getChildren().get(player.getIdRoom());
         temp.add(avatar, 1, 1);
         GridPane.setConstraints(avatar, 1, 1, 2, 2, HPos.CENTER, VPos.CENTER);

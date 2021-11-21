@@ -53,5 +53,15 @@ public class DirectedGraph<V,E> implements IGraph<V,E> {
     public int[][] floydWarshall() {
         return null;
     }
+
+    @Override
+    public void prim() {
+        
+    }
+
+    @Override
+    public void kruskal() {
+        
+    }
     
 }

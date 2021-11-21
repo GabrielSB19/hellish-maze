@@ -55,4 +55,14 @@ public class UndirectedGraph<V, E> implements IGraph<V, E> {
         return vertex.get(id);
     }
 
+    @Override
+    public void prim() {
+        
+    }
+
+    @Override
+    public void kruskal() {
+        
+    }
+
 }
