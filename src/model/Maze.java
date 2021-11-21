@@ -1,6 +1,7 @@
 package model;
 
 import collection.IGraph;
+import collection.directedGraph.DirectedGraph;
 import collection.undirectedGraph.UndirectedGraph;
 import model.door.Door;
 import model.room.Room;
@@ -21,8 +22,12 @@ public class Maze {
         factories[2] = new HardFactory();
     }
 
-    public void createGraph(int amount) {
-        graph = new UndirectedGraph<>(amount);
+    public void createGraph(int amount,boolean type) {
+        if(type){
+            graph = new DirectedGraph<>(amount);
+        }else{
+            graph = new UndirectedGraph<>(amount);
+        }
     }
 
     public void addRoom(int id, int type) {

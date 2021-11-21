@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="900.0" styleClass="mainPane" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane fx:id="gamePane" layoutX="31.0" layoutY="38.0" prefHeight="696.0" prefWidth="435.0" styleClass="box" stylesheets="@../styles/main.css">
          <children>
-            <Label layoutX="63.0" layoutY="333.0" text="Can you beat us?">
+            <Label layoutX="62.0" layoutY="379.0" text="Can you beat us?">
                <font>
                   <Font name="Comic Sans MS" size="40.0" />
                </font>
@@ -23,17 +26,17 @@
                   <Image url="@../images/maze.png" />
                </image>
             </ImageView>
-            <JFXButton layoutX="51.0" layoutY="415.0" onAction="#easy" prefHeight="62.0" prefWidth="334.0" styleClass="btn-flash" text="Easy">
+            <JFXButton layoutX="91.0" layoutY="448.0" onAction="#easy" prefHeight="64.0" prefWidth="253.0" styleClass="btn-flash" text="Easy">
                <font>
                   <Font name="Comic Sans MS" size="30.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="51.0" layoutY="517.0" onAction="#medium" prefHeight="62.0" prefWidth="334.0" styleClass="btn-flash" text="Medium">
+            <JFXButton layoutX="91.0" layoutY="536.0" onAction="#medium" prefHeight="62.0" prefWidth="253.0" styleClass="btn-flash" text="Medium">
                <font>
                   <Font name="Comic Sans MS" size="30.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="51.0" layoutY="613.0" onAction="#hard" prefHeight="62.0" prefWidth="334.0" styleClass="btn-flash" text="Hard">
+            <JFXButton layoutX="91.0" layoutY="620.0" onAction="#hard" prefHeight="62.0" prefWidth="253.0" styleClass="btn-flash" text="Hard">
                <font>
                   <Font name="Comic Sans MS" size="30.0" />
                </font>
@@ -91,6 +94,25 @@
                   <Image url="@../images/back.png" />
                </image>
             </ImageView>
+            <JFXComboBox fx:id="cbType" labelFloat="true" layoutX="186.0" layoutY="326.0" prefHeight="27.0" prefWidth="198.0" promptText="Choose Your Type">
+               <focusColor>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#088a33" />
+                        <Stop color="#a80404" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </focusColor>
+               <unFocusColor>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#9a0505" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </unFocusColor>
+            </JFXComboBox>
+            <Label layoutX="75.0" layoutY="330.0" text="Maze Type" />
          </children>
       </Pane>
       <Pane fx:id="instructionsPane" layoutX="31.0" layoutY="39.0" prefHeight="696.0" prefWidth="435.0" style="-fx-background-color: #fff;" styleClass="box">
@@ -180,7 +202,7 @@
                   <Font name="Comic Sans MS Bold" size="14.0" />
                </font>
             </Label>
-            <ImageView fitHeight="41.0" fitWidth="50.0" layoutX="194.0" layoutY="8.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="41.0" fitWidth="50.0" layoutX="39.0" layoutY="8.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/back.png" />
                </image>

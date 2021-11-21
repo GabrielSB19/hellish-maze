@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+import javafx.scene.text.Text;
 import model.Maze;
 import model.Player;
 import model.door.Door;
@@ -32,20 +33,22 @@ public class BoardController {
 
     private MazeController mController;
     private Player player;
+    private boolean type;
     private int endPoint;
 
     private final int EASY_V = 9;
     private final int MEDIUM_V = 16;
     private final int HARD_V = 25;
 
-    public BoardController(MazeController mController, Player player) {
+    public BoardController(MazeController mController, Player player, boolean type) {
         this.mController = mController;
         this.player = player;
+        this.type = type;
     }
 
     public void easyBoard() {
         endPoint = 3;
-        mController.getMaze().createGraph(EASY_V);
+        mController.getMaze().createGraph(EASY_V, type);
         createRooms(EASY_V, 1);
         createDoors(endPoint, 1);
         createBoard(EASY_V, "green");
@@ -54,7 +57,7 @@ public class BoardController {
 
     public void mediumBoard() {
         endPoint = 4;
-        mController.getMaze().createGraph(MEDIUM_V);
+        mController.getMaze().createGraph(MEDIUM_V, type);
         createRooms(MEDIUM_V, 2);
         createDoors(endPoint, 2);
         createBoard(MEDIUM_V, "blue");
@@ -63,7 +66,7 @@ public class BoardController {
 
     public void hardBoard() {
         endPoint = 5;
-        mController.getMaze().createGraph(HARD_V);
+        mController.getMaze().createGraph(HARD_V, type);
         createRooms(HARD_V, 3);
         createDoors(endPoint, 3);
         createBoard(HARD_V, "red");
@@ -131,6 +134,7 @@ public class BoardController {
                     tempGrid.add(dImg, pos[0], pos[1]);
                     tempGrid.add(dToken, pos[2], pos[3]);
                 }
+                completeGridNodes(tempGrid);
                 tempGrid.setStyle(
                         "-fx-border-color:" + color + "; -fx-border-radius: 20px; -fx-background-radius: 20px;");
                 boxStyle(tempGrid, 0, tempGrid.getChildren().size());
@@ -169,6 +173,16 @@ public class BoardController {
             pos[3] = 3;
         }
         return pos;
+    }
+
+    private void completeGridNodes(GridPane gPane) {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (getNodeByRowColumnIndex(i, j, gPane) == null) {
+                    gPane.add(new Text(), j, i);
+                }
+            }
+        }
     }
 
     private void renderImg(ImageView img) {
@@ -263,7 +277,7 @@ public class BoardController {
         Node result = null;
         ObservableList<Node> childrens = gridPane.getChildren();
         for (Node node : childrens) {
-            if (GridPane.getRowIndex(node) == row && GridPane.getColumnIndex(node) == column) {
+            if (!(node instanceof Text) && GridPane.getRowIndex(node) == row && GridPane.getColumnIndex(node) == column) {
                 result = node;
                 break;
             }

@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXRadioButton;
 
 import animatefx.animation.FadeIn;
@@ -63,6 +64,10 @@ public class MazeController {
 
     @FXML
     private JFXRadioButton rSamurai;
+
+    @FXML
+    private JFXComboBox<String> cbType;
+
     private Maze maze;
     private BoardController bController;
 
@@ -96,12 +101,14 @@ public class MazeController {
         gamePane.toFront();
         new FadeIn(rpane1).play();
         rpane1.toFront();
+        cbType.getItems().clear();
+        cbType.getItems().addAll("Directed","Undirected");
     }
 
     @FXML
     public void easy(ActionEvent event) {
-        if (avatar.getSelectedToggle() != null) {
-            bController = new BoardController(this, hasAvatar());
+        if (avatar.getSelectedToggle() != null && cbType.getSelectionModel().getSelectedItem() != null) {
+            bController = new BoardController(this, hasAvatar(),mazeType());
             renderScreen(Route.BOARD);
             bController.easyBoard();
         }
@@ -109,8 +116,8 @@ public class MazeController {
 
     @FXML
     public void medium(ActionEvent event) {
-        if (avatar.getSelectedToggle() != null) {
-            bController = new BoardController(this, hasAvatar());
+        if (avatar.getSelectedToggle() != null && cbType.getSelectionModel().getSelectedItem() != null) {
+            bController = new BoardController(this, hasAvatar(),mazeType());
             renderScreen(Route.BOARD);
             bController.mediumBoard();
         }
@@ -118,8 +125,8 @@ public class MazeController {
 
     @FXML
     public void hard(ActionEvent event) {
-        if (avatar.getSelectedToggle() != null) {
-            bController = new BoardController(this, hasAvatar());
+        if (avatar.getSelectedToggle() != null && cbType.getSelectionModel().getSelectedItem() != null) {
+            bController = new BoardController(this, hasAvatar(),mazeType());
             renderScreen(Route.BOARD);
             bController.hardBoard();
         }
@@ -134,6 +141,14 @@ public class MazeController {
             return maze.newPlayer(3);
         } else {
             return maze.newPlayer(4);
+        }
+    }
+
+    private boolean mazeType() {
+        if (cbType.getSelectionModel().getSelectedItem().equals("Directed")) {
+            return true;
+        }else{
+            return false;
         }
     }
 

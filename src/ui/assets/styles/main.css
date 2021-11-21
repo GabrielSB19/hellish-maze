@@ -12,11 +12,11 @@
     -fx-background-radius: 0 40 40 0;
 }
 .right-pane2{
-    -fx-background-color: linear-gradient(to left,rgb(5, 109, 36) ,#9fe28a);
+    -fx-background-color: linear-gradient(to left,rgb(5, 109, 78) ,#90c481);
     -fx-background-radius: 0 40 40 0;
 }
 .right-pane3{
-    -fx-background-color: linear-gradient(to left,rgb(150, 106, 11) ,#e9c476);
+    -fx-background-color: linear-gradient(to left,rgb(83, 11, 150) ,#b176e9);
     -fx-background-radius: 0 40 40 0;
 }
 .btn-flash{
@@ -27,5 +27,8 @@
     -fx-font-size: 30px;
 }
 .label{
+    -fx-font-family: "Comic Sans MS";
+}
+.jfx-combo-box{
     -fx-font-family: "Comic Sans MS";
 }
