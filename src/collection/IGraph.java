@@ -17,5 +17,5 @@ public interface IGraph<V, E> {
 
     int[][] floydWarshall();
 
-    List<Integer> getPath(int[] prev);
+    List<Integer> getPath();
 }

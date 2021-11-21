@@ -80,6 +80,7 @@ public class BoardController {
         GridPane temp = (GridPane) board.getChildren().get(player.getIdRoom());
         temp.add(avatar, 1, 1);
         GridPane.setConstraints(avatar, 1, 1, 2, 2, HPos.CENTER, VPos.CENTER);
+
     }
 
     private void createRooms(int rooms, int type) {
@@ -148,7 +149,9 @@ public class BoardController {
         board.setPadding(new Insets(10, 10, 10, 10));
         board.requestFocus();
 
-        mController.getMaze().minimumPath(0);
+        player.setTokens(mController.getMaze().minimumPath(0));
+        lblTokens.setText(player.getTokens() + "");
+
     }
 
     private int[] getPosition(int s, int d, int props) {
@@ -239,34 +242,47 @@ public class BoardController {
     @FXML
     public void movement(KeyEvent event) {
         int recentId = player.getIdRoom();
+        int cost = 0;
         GridPane temp = (GridPane) board.getChildren().get(recentId);
         switch (event.getCode()) {
         case UP:
             if (getNodeByRowColumnIndex(0, 2, temp) != null) {
                 player.setIdRoom(recentId - endPoint);
                 temp.getChildren().remove(getNodeByRowColumnIndex(1, 1, temp));
+                Label n = (Label) getNodeByRowColumnIndex(0, 2, temp);
+                cost = Integer.parseInt(n.getText());
                 setPlayer();
+                setTokens(cost);
             }
             break;
         case DOWN:
             if (getNodeByRowColumnIndex(3, 2, temp) != null) {
                 player.setIdRoom(recentId + endPoint);
                 temp.getChildren().remove(getNodeByRowColumnIndex(1, 1, temp));
+                Label n = (Label) getNodeByRowColumnIndex(3, 2, temp);
+                cost = Integer.parseInt(n.getText());
                 setPlayer();
+                setTokens(cost);
             }
             break;
         case RIGHT:
             if (getNodeByRowColumnIndex(2, 3, temp) != null) {
                 player.setIdRoom(recentId + 1);
                 temp.getChildren().remove(getNodeByRowColumnIndex(1, 1, temp));
+                Label n = (Label) getNodeByRowColumnIndex(2, 3, temp);
+                cost = Integer.parseInt(n.getText());
                 setPlayer();
+                setTokens(cost);
             }
             break;
         case LEFT:
             if (getNodeByRowColumnIndex(2, 0, temp) != null) {
                 player.setIdRoom(recentId - 1);
                 temp.getChildren().remove(getNodeByRowColumnIndex(1, 1, temp));
+                Label n = (Label) getNodeByRowColumnIndex(2, 0, temp);
+                cost = Integer.parseInt(n.getText());
                 setPlayer();
+                setTokens(cost);
             }
             break;
         default:
@@ -288,7 +304,9 @@ public class BoardController {
         return result;
     }
 
-    private void setTokens() {
+    private void setTokens(int amountToMoves) {
+        player.decreaseTokens(amountToMoves);
+        lblTokens.setText(player.getTokens() + "");
 
     }
 

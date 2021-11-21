@@ -84,7 +84,7 @@ public abstract class Graph<V, E> implements IGraph<V, E> {
     }
 
     @Override
-    public List<Integer> getPath(int[] prev) {
+    public List<Integer> getPath() {
         List<Integer> path = new ArrayList<>();
         int c = 0;
         for (int i = prev.length - 1; i >= 0; i--) {
