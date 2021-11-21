@@ -149,9 +149,16 @@ public class BoardController {
         board.setPadding(new Insets(10, 10, 10, 10));
         board.requestFocus();
 
+<<<<<<< HEAD
         mController.getMaze().minimumPathFloyd();
         player.setTokens(mController.getMaze().minimumPath(0));
         lblTokens.setText(player.getTokens() + "");
+=======
+        mController.getMaze().test();
+        player.setTokens(mController.getMaze().minimumPath(0));
+        lblTokens.setText(player.getTokens() + "");
+
+>>>>>>> 15921809c24f01c72eb45b835c0425541d67c39a
     }
 
     private int[] getPosition(int s, int d, int props) {
