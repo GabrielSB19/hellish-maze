@@ -37,7 +37,9 @@ public class Maze {
 
     public void addDoor(Room source, Room destination, int type) {
         int roomType = (int) ((Math.random() * type));
-        graph.addEdge(factories[roomType].createDoor(), source, destination);
+        Door newDoor = factories[roomType].createDoor();
+        graph.addEdge(newDoor, source, destination);
+        graph.fillMatrix(source.getId(), destination.getId(), newDoor.getToken());
     }
 
     public void setTreasure(int id) {

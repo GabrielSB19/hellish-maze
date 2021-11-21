@@ -32,6 +32,21 @@ public abstract class Graph<V,E> implements IGraph<V, E>{
     }
 
     @Override
+    public void fillMatrix(int i, int j, int token){
+        adjacencyMatrix[i][j] = token;
+    }
+
+    private void initMatrix(){
+        for (int i = 0; i<adjacencyMatrix.length; i++){
+            for (int j = 0; j < adjacencyMatrix.length; j++) {
+                if(i == j){
+                    adjacencyMatrix[i][j] = 0;
+                }
+            }
+        }
+    }
+
+    @Override
     public int[] dijkstra(int source) {
         return null;
     }
@@ -39,16 +54,6 @@ public abstract class Graph<V,E> implements IGraph<V, E>{
     @Override
     public int[][] floydWarshall() {
         return null;
-    }
-
-    @Override
-    public void prim() {
-        
-    }
-
-    @Override
-    public void kruskal() {
-        
     }
     
 }

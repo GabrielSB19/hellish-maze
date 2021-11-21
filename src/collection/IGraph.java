@@ -5,8 +5,7 @@ public interface IGraph<V,E> {
     void addVextex(V vertex);
     Vertex<V,E> getVertex(int id);
     Vertex<V, E> searchVertex(V data);
+    void fillMatrix(int i, int j, int token);
     int[] dijkstra(int source);
     int[][] floydWarshall();
-    void prim();
-    void kruskal();
 }
