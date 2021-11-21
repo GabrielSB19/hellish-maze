@@ -18,4 +18,9 @@ public class UndirectedGraph<V, E> extends Graph<V, E> {
         searchVertex(destination).addEdge(newEdge);
     }
 
+    @Override
+    public void fillMatrix(int i, int j, int token){
+        adjacencyMatrix[i][j] = token;
+        adjacencyMatrix[j][i] = token;
+    }
 }

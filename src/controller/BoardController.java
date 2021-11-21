@@ -147,6 +147,8 @@ public class BoardController {
         board.setVgap(10);
         board.setPadding(new Insets(10, 10, 10, 10));
         board.requestFocus();
+
+        mController.getMaze().test();
     }
 
     private int[] getPosition(int s, int d, int props) {
