@@ -1,8 +1,8 @@
 package model;
 
+import collection.DirectedGraph;
 import collection.IGraph;
-import collection.directedGraph.DirectedGraph;
-import collection.undirectedGraph.UndirectedGraph;
+import collection.UndirectedGraph;
 import model.door.Door;
 import model.room.Room;
 import model.room.TraditionalRoom;

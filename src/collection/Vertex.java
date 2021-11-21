@@ -1,14 +1,11 @@
-package collection.directedGraph;
+package collection;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import collection.IEdge;
-import collection.IVertex;
-
-public class Vertex<V, E> implements IVertex<V,E>{
+public class Vertex<V, E>{
     private V data;
-    private List<IEdge<V, E>> edges;
+    private List<Edge<V, E>> edges;
 
     public Vertex(V data) {
         this.data = data;
@@ -19,7 +16,7 @@ public class Vertex<V, E> implements IVertex<V,E>{
         return this.data;
     }
 
-    public List<IEdge<V, E>> getEdges() {
+    public List<Edge<V, E>> getEdges() {
         return this.edges;
     }
 
