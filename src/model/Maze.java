@@ -55,22 +55,12 @@ public class Maze {
         return this.graph;
     }
 
-<<<<<<< HEAD
     public void minimumPathFloyd(){
         graph.floydWarshall();
     }
 
-=======
-    public void test(){
-        graph.floydWarshall();
-    }
->>>>>>> 15921809c24f01c72eb45b835c0425541d67c39a
     public int minimumPath(int start) {
         return graph.dijkstra(start);
 
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> 15921809c24f01c72eb45b835c0425541d67c39a
 }
