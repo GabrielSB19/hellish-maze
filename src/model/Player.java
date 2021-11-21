@@ -47,6 +47,10 @@ public class Player {
         this.tokens = tokens;
     }
 
+    public void decreaseTokens(int tokens) {
+        this.tokens -= tokens;
+    }
+
     public boolean isHasKey() {
         return this.hasKey;
     }

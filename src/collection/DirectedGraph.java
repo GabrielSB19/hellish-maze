@@ -2,11 +2,13 @@ package collection;
 
 import java.util.LinkedList;
 
-public class DirectedGraph<V, E> extends Graph<V,E> {
-    
+public class DirectedGraph<V, E> extends Graph<V, E> {
+
     public DirectedGraph(int vertex) {
-        adjacencyMatrix = new int[vertex][vertex];
+        adjacencyMatrix = new Integer[vertex][vertex];
         this.vertex = new LinkedList<>();
+        prev = new int[vertex];
+        initMatrix();
     }
 
     @Override

@@ -22,17 +22,17 @@ public class Maze {
         factories[2] = new HardFactory();
     }
 
-    public void createGraph(int amount,boolean type) {
-        if(type){
+    public void createGraph(int amount, boolean type) {
+        if (type) {
             graph = new DirectedGraph<>(amount);
-        }else{
+        } else {
             graph = new UndirectedGraph<>(amount);
         }
     }
 
     public void addRoom(int id, int type) {
         int roomType = (int) ((Math.random() * type));
-        graph.addVextex(factories[roomType].createRoom(id));
+        graph.addVertex(factories[roomType].createRoom(id));
     }
 
     public void addDoor(Room source, Room destination, int type) {
@@ -47,7 +47,7 @@ public class Maze {
         tRoom.setTreasure(true);
     }
 
-    public Player newPlayer(int avatar){
+    public Player newPlayer(int avatar) {
         return new Player(avatar);
     }
 
@@ -55,7 +55,15 @@ public class Maze {
         return this.graph;
     }
 
+<<<<<<< HEAD
     public void test(){
         graph.floydWarshall();
     }
+=======
+    public int minimumPath(int start) {
+        return graph.dijkstra(start);
+
+    }
+
+>>>>>>> 646835abcbc3a5b8d05877b4dce85e1fe3d863a7
 }
