@@ -48,7 +48,7 @@ public class Player {
     }
 
     public void decreaseTokens(int tokens) {
-        this.tokens -= tokens;
+            this.tokens -= tokens;
     }
 
     public boolean isHasKey() {

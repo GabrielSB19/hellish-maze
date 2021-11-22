@@ -32,3 +32,6 @@
 .jfx-combo-box{
     -fx-font-family: "Comic Sans MS";
 }
+.ok{
+    -fx-background-color: linear-gradient(to left,rgb(150, 11, 18) ,#e97676);
+}

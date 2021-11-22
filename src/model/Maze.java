@@ -55,12 +55,15 @@ public class Maze {
         return this.graph;
     }
 
-    public void minimumPathFloyd(){
+    public void minimumPathBetweenPairs() {
         graph.floydWarshall();
     }
 
     public int minimumPath(int start) {
         return graph.dijkstra(start);
+    }
 
+    public String getPath() {
+        return graph.getPath();
     }
 }

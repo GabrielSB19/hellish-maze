@@ -1,18 +1,29 @@
 package controller;
 
+import java.io.IOException;
+
+import com.jfoenix.controls.JFXTextArea;
+
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.Maze;
 import model.Player;
 import model.door.Door;
@@ -29,12 +40,22 @@ public class BoardController {
     private Label lblTokens;
 
     @FXML
+    private Label lblRooms;
+
+    @FXML
     private ImageView hasKey;
+
+    @FXML
+    private Text lblPlayerState;
+
+    @FXML
+    private JFXTextArea path;
 
     private MazeController mController;
     private Player player;
     private boolean type;
     private int endPoint;
+    private Stage modal;
 
     private final int EASY_V = 9;
     private final int MEDIUM_V = 16;
@@ -80,7 +101,6 @@ public class BoardController {
         GridPane temp = (GridPane) board.getChildren().get(player.getIdRoom());
         temp.add(avatar, 1, 1);
         GridPane.setConstraints(avatar, 1, 1, 2, 2, HPos.CENTER, VPos.CENTER);
-
     }
 
     private void createRooms(int rooms, int type) {
@@ -89,6 +109,7 @@ public class BoardController {
         }
         mController.getMaze().addRoom(rooms - 1, 1);
         mController.getMaze().setTreasure(rooms - 1);
+        lblRooms.setText(rooms + "");
     }
 
     private void createDoors(int render, int type) {
@@ -149,7 +170,7 @@ public class BoardController {
         board.setPadding(new Insets(10, 10, 10, 10));
         board.requestFocus();
 
-        mController.getMaze().minimumPathFloyd();
+        // mController.getMaze().minimumPathFloyd();
         player.setTokens(mController.getMaze().minimumPath(0));
         lblTokens.setText(player.getTokens() + "");
     }
@@ -251,7 +272,6 @@ public class BoardController {
                 temp.getChildren().remove(getNodeByRowColumnIndex(1, 1, temp));
                 Label n = (Label) getNodeByRowColumnIndex(0, 2, temp);
                 cost = Integer.parseInt(n.getText());
-                setPlayer();
                 setTokens(cost);
             }
             break;
@@ -261,7 +281,6 @@ public class BoardController {
                 temp.getChildren().remove(getNodeByRowColumnIndex(1, 1, temp));
                 Label n = (Label) getNodeByRowColumnIndex(3, 2, temp);
                 cost = Integer.parseInt(n.getText());
-                setPlayer();
                 setTokens(cost);
             }
             break;
@@ -271,7 +290,6 @@ public class BoardController {
                 temp.getChildren().remove(getNodeByRowColumnIndex(1, 1, temp));
                 Label n = (Label) getNodeByRowColumnIndex(2, 3, temp);
                 cost = Integer.parseInt(n.getText());
-                setPlayer();
                 setTokens(cost);
             }
             break;
@@ -281,7 +299,6 @@ public class BoardController {
                 temp.getChildren().remove(getNodeByRowColumnIndex(1, 1, temp));
                 Label n = (Label) getNodeByRowColumnIndex(2, 0, temp);
                 cost = Integer.parseInt(n.getText());
-                setPlayer();
                 setTokens(cost);
             }
             break;
@@ -306,8 +323,46 @@ public class BoardController {
 
     private void setTokens(int amountToMoves) {
         player.decreaseTokens(amountToMoves);
+        isWinner();
         lblTokens.setText(player.getTokens() + "");
+        setPlayer();
+    }
 
+    private void isWinner() {
+        if (player.getTokens() < 0) {
+            player.setWinner(true);
+            modal = loadModal(Route.MODAL);
+            modal.show();
+            lblPlayerState.setText("!Loser!");
+            path.setText(mController.getMaze().getPath());
+        } else if (player.getIdRoom() == board.getChildren().size() - 1) {
+            modal = loadModal(Route.MODAL);
+            modal.show();
+            lblPlayerState.setText("!Winner!");
+            path.setText(mController.getMaze().getPath());
+        }
+    }
+
+    private Stage loadModal(Route route) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(route.getRoute()));
+        fxmlLoader.setController(this);
+        Stage stage = new Stage();
+        try {
+            Parent modal = fxmlLoader.load();
+            Scene scene = new Scene(modal);
+            scene.setFill(Color.TRANSPARENT);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.initStyle(StageStyle.TRANSPARENT);
+        return stage;
+    }
+
+    @FXML
+    public void finish(ActionEvent event) {
+        modal.close();
+        mController.renderScreen(Route.WELCOME);
     }
 
 }

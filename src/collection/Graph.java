@@ -79,12 +79,11 @@ public abstract class Graph<V, E> implements IGraph<V, E> {
                 }
             }
         }
-
         return distance[vertex.size() - 1];
     }
 
     @Override
-    public List<Integer> getPath() {
+    public String getPath() {
         List<Integer> path = new ArrayList<>();
         int c = 0;
         for (int i = prev.length - 1; i >= 0; i--) {
@@ -98,10 +97,9 @@ public abstract class Graph<V, E> implements IGraph<V, E> {
                     c = prev[i];
                 }
             }
-
         }
         Collections.reverse(path);
-        return path;
+        return path.toString();
     }
 
     @Override

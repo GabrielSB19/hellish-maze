@@ -1,7 +1,5 @@
 package collection;
 
-import java.util.List;
-
 public interface IGraph<V, E> {
     void addEdge(E edge, V source, V destination);
 
@@ -17,5 +15,5 @@ public interface IGraph<V, E> {
 
     int[][] floydWarshall();
 
-    List<Integer> getPath();
+    String getPath();
 }
