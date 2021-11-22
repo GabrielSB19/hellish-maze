@@ -55,8 +55,8 @@ public class Maze {
         return this.graph;
     }
 
-    public void minimumPathBetweenPairs() {
-        graph.floydWarshall();
+    public int minimumPathBetweenPairs(int current) {
+        return graph.floydWarshall(current);
     }
 
     public int minimumPath(int start) {

@@ -101,7 +101,7 @@ public abstract class Graph<V, E> implements IGraph<V, E> {
     }
 
     @Override
-    public int[][] floydWarshall() {
+    public int floydWarshall(int recent) {
         int numVertex = adjacencyMatrix.length;
         int INF = Integer.MAX_VALUE;
         int[][] path = new int[numVertex][numVertex];
@@ -109,15 +109,16 @@ public abstract class Graph<V, E> implements IGraph<V, E> {
 
         for (int i = 0; i < numVertex; i++) {
             for (int j = 0; j < numVertex; j++) {
-                if (adjacencyMatrix[i][j] != 0) {
+                if (adjacencyMatrix[i][j] != null && adjacencyMatrix[i][j] != 0) {
                     dist[i][j] = adjacencyMatrix[i][j];
                 } else {
                     dist[i][j] = INF;
                 }
+                path[i][j] = j;
                 if (i == j) {
                     dist[i][j] = 0;
-                }
-                path[i][j] = j;
+                    path[i][j] = 0;
+                }         
             }
         }
         for (int k = 0; k < numVertex; k++) {
@@ -132,21 +133,7 @@ public abstract class Graph<V, E> implements IGraph<V, E> {
 
             }
         }
-        System.out.println("Floyd Path: \n");
-        for (int i = 0; i < numVertex; i++) {
-            for (int j = 0; j < numVertex; j++) {
-                System.out.printf("%2d ", path[i][j]);
-            }
-            System.out.println("\n");
-        }
-        System.out.println("Floyd Dist: \n");
-        for (int i = 0; i < numVertex; i++) {
-            for (int j = 0; j < numVertex; j++) {
-                System.out.printf("%2d ", dist[i][j]);
-            }
-            System.out.println("\n");
-        }
-        return dist;
+        return path[recent][numVertex-1];
     }
 
 }

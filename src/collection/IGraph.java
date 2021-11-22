@@ -13,7 +13,7 @@ public interface IGraph<V, E> {
 
     int dijkstra(int source);
 
-    int[][] floydWarshall();
+    int floydWarshall(int recent);
 
     String getPath();
 }

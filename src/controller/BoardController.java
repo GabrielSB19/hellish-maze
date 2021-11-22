@@ -94,15 +94,6 @@ public class BoardController {
         setPlayer();
     }
 
-    private void setPlayer() {
-        ImageView avatar = new ImageView(new Image(Route.AVATAR.getRoute() + player.getAvatar() + ".png"));
-        avatar.setFitHeight(40);
-        avatar.setFitWidth(40);
-        GridPane temp = (GridPane) board.getChildren().get(player.getIdRoom());
-        temp.add(avatar, 1, 1);
-        GridPane.setConstraints(avatar, 1, 1, 2, 2, HPos.CENTER, VPos.CENTER);
-    }
-
     private void createRooms(int rooms, int type) {
         mController.getMaze().addRoom(0, 1);
         for (int i = 1; i < rooms - 1; i++) {
@@ -171,9 +162,30 @@ public class BoardController {
         board.setPadding(new Insets(10, 10, 10, 10));
         board.requestFocus();
 
-        // mController.getMaze().minimumPathFloyd();
         player.setTokens(mController.getMaze().minimumPath(0));
         lblTokens.setText(player.getTokens() + "");
+    }
+
+    private Stage loadModal(Route route) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(route.getRoute()));
+        fxmlLoader.setController(this);
+        Stage stage = new Stage();
+        try {
+            Parent modal = fxmlLoader.load();
+            Scene scene = new Scene(modal);
+            scene.setFill(Color.TRANSPARENT);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.initStyle(StageStyle.TRANSPARENT);
+        return stage;
+    }
+
+    @FXML
+    public void finish(ActionEvent event) {
+        modal.close();
+        mController.renderScreen(Route.WELCOME);
     }
 
     private int[] getPosition(int s, int d, int props) {
@@ -306,7 +318,6 @@ public class BoardController {
         default:
             break;
         }
-
     }
 
     private Node getNodeByRowColumnIndex(final int row, final int column, GridPane gridPane) {
@@ -322,12 +333,32 @@ public class BoardController {
         return result;
     }
 
-    private void setTokens(int amountToMoves) {
-        player.decreaseTokens(amountToMoves);
-        hasKey();
-        isWinner();
-        lblTokens.setText(player.getTokens() + "");
-        setPlayer();
+    private void setPlayer() {
+        ImageView avatar = new ImageView(new Image(Route.AVATAR.getRoute() + player.getAvatar() + ".png"));
+        avatar.setFitHeight(40);
+        avatar.setFitWidth(40);
+        GridPane temp = (GridPane) board.getChildren().get(player.getIdRoom());
+        temp.add(avatar, 1, 1);
+        GridPane.setConstraints(avatar, 1, 1, 2, 2, HPos.CENTER, VPos.CENTER);
+    }
+
+    private void hasClue() {
+        Room room = mController.getMaze().getGraph().getVertex(player.getIdRoom()).getData();
+        if (room instanceof EnchantedRoom) {
+            int clue = mController.getMaze().minimumPathBetweenPairs(player.getIdRoom());
+            EnchantedRoom eRoom = (EnchantedRoom) room;
+            eRoom.setClue(clue);
+            GridPane tempGrid = (GridPane) board.getChildren().get(clue);
+            tempGrid.setStyle(
+                    "-fx-border-color: purple; -fx-border-radius: 20px; -fx-background-radius: 20px;-fx-background-color: yellow");
+        }
+    }
+
+    private void hasKey() {
+        if (mController.getMaze().getGraph().getVertex(player.getIdRoom()).getData() instanceof KeyRoom) {
+            key.setVisible(true);
+            player.setHasKey(true);
+        }
     }
 
     private void isWinner() {
@@ -345,33 +376,13 @@ public class BoardController {
         }
     }
 
-    private void hasKey() {
-        if (mController.getMaze().getGraph().getVertex(player.getIdRoom()).getData() instanceof KeyRoom) {
-            key.setVisible(true);
-            player.setHasKey(true);
-        }
-    }
-
-    private Stage loadModal(Route route) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(route.getRoute()));
-        fxmlLoader.setController(this);
-        Stage stage = new Stage();
-        try {
-            Parent modal = fxmlLoader.load();
-            Scene scene = new Scene(modal);
-            scene.setFill(Color.TRANSPARENT);
-            stage.setScene(scene);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        stage.initStyle(StageStyle.TRANSPARENT);
-        return stage;
-    }
-
-    @FXML
-    public void finish(ActionEvent event) {
-        modal.close();
-        mController.renderScreen(Route.WELCOME);
+    private void setTokens(int amountToMoves) {
+        player.decreaseTokens(amountToMoves);
+        hasKey();
+        hasClue();
+        isWinner();
+        lblTokens.setText(player.getTokens() + "");
+        setPlayer();
     }
 
 }
