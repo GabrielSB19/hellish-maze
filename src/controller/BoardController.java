@@ -43,13 +43,13 @@ public class BoardController {
     private Label lblRooms;
 
     @FXML
-    private ImageView hasKey;
-
-    @FXML
     private Text lblPlayerState;
 
     @FXML
     private JFXTextArea path;
+
+    @FXML
+    private ImageView key;
 
     private MazeController mController;
     private Player player;
@@ -104,7 +104,8 @@ public class BoardController {
     }
 
     private void createRooms(int rooms, int type) {
-        for (int i = 0; i < rooms - 1; i++) {
+        mController.getMaze().addRoom(0, 1);
+        for (int i = 1; i < rooms - 1; i++) {
             mController.getMaze().addRoom(i, type);
         }
         mController.getMaze().addRoom(rooms - 1, 1);
@@ -323,6 +324,7 @@ public class BoardController {
 
     private void setTokens(int amountToMoves) {
         player.decreaseTokens(amountToMoves);
+        hasKey();
         isWinner();
         lblTokens.setText(player.getTokens() + "");
         setPlayer();
@@ -338,8 +340,15 @@ public class BoardController {
         } else if (player.getIdRoom() == board.getChildren().size() - 1) {
             modal = loadModal(Route.MODAL);
             modal.show();
-            lblPlayerState.setText("!Winner!");
+            lblPlayerState.setText((player.isHasKey()) ? "!Winner with Key!" : "!Winner!");
             path.setText(mController.getMaze().getPath());
+        }
+    }
+
+    private void hasKey() {
+        if (mController.getMaze().getGraph().getVertex(player.getIdRoom()).getData() instanceof KeyRoom) {
+            key.setVisible(true);
+            player.setHasKey(true);
         }
     }
 

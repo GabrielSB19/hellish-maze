@@ -17,26 +17,31 @@
       </GridPane>
       <Pane layoutX="309.0" layoutY="8.0" prefHeight="32.0" prefWidth="281.0" styleClass="box">
          <children>
-            <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="32.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="47.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/cryptocurrency.png" />
                </image>
             </ImageView>
-            <Label fx:id="lblTokens" layoutX="73.0" layoutY="-1.0" text="13">
+            <Label fx:id="lblTokens" layoutX="82.0" layoutY="-1.0" text="13">
                <font>
                   <Font name="Comic Sans MS" size="22.0" />
                </font>
             </Label>
-            <ImageView fitHeight="22.0" fitWidth="23.0" layoutX="186.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="22.0" fitWidth="23.0" layoutX="212.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/traditional.png" />
                </image>
             </ImageView>
-            <Label fx:id="lblRooms" layoutX="228.0" layoutY="-1.0" text="13">
+            <Label fx:id="lblRooms" layoutX="175.0" layoutY="-1.0" text="13">
                <font>
                   <Font name="Comic Sans MS" size="22.0" />
                </font>
             </Label>
+            <ImageView fx:id="key" fitHeight="22.0" fitWidth="23.0" layoutX="13.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../images/key1.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="433.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
