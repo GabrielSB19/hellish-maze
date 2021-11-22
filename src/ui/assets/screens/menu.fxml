@@ -14,6 +14,110 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="900.0" styleClass="mainPane" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <Pane fx:id="instructionsPane" layoutX="31.0" layoutY="39.0" prefHeight="696.0" prefWidth="435.0" style="-fx-background-color: #fff;" styleClass="box">
+         <children>
+            <ImageView fitHeight="75.0" fitWidth="73.0" layoutX="174.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/door1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="39.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/door2.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="308.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/door3.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="37.0" layoutY="175.0" prefHeight="73.0" prefWidth="354.0" text="There are 3 types of doors which decrease your tokens in an incremental way, they are your worst enemy." textAlignment="JUSTIFY" wrapText="true">
+               <font>
+                  <Font name="Comic Sans MS" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="172.0" layoutY="128.0" text="Doors">
+               <font>
+                  <Font name="Comic Sans MS" size="28.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="64.0" fitWidth="61.0" layoutX="142.0" layoutY="570.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/key.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="64.0" fitWidth="66.0" layoutX="232.0" layoutY="568.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/poison.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="64.0" fitWidth="66.0" layoutX="325.0" layoutY="567.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/treasure.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="43.0" layoutY="412.0" prefHeight="138.0" prefWidth="354.0" text="There are three types of rooms omitting the traditional one (without any type of added).The key room it is necessary to go through at least one to collect the key and be able to open the treasure padlock also the enchanted room will give you a clue." textAlignment="JUSTIFY" wrapText="true">
+               <font>
+                  <Font name="Comic Sans MS" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="173.0" layoutY="373.0" text="Rooms">
+               <font>
+                  <Font name="Comic Sans MS" size="28.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="37.0" layoutY="49.0" prefHeight="73.0" prefWidth="354.0" text="Hellish Maze is a video game that consists of finding the shortest path between different types of rooms to find the hidden treasure." textAlignment="JUSTIFY" wrapText="true">
+               <font>
+                  <Font name="Comic Sans MS" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="160.0" layoutY="652.0" text="Key">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="229.0" layoutY="652.0" text="Enchanted">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="327.0" layoutY="652.0" text="Treasure">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="188.0" layoutY="346.0" text="Golden">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="56.0" layoutY="346.0" text="Silver">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="319.0" layoutY="346.0" text="Infernal">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="41.0" fitWidth="50.0" layoutX="39.0" layoutY="8.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/back.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="61.0" fitWidth="56.0" layoutX="52.0" layoutY="573.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/traditional.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="43.0" layoutY="652.0" text="Traditional">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
       <Pane fx:id="gamePane" layoutX="31.0" layoutY="38.0" prefHeight="696.0" prefWidth="435.0" styleClass="box" stylesheets="@../styles/main.css">
          <children>
             <Label layoutX="62.0" layoutY="379.0" text="Can you beat us?">
@@ -113,100 +217,6 @@
                </unFocusColor>
             </JFXComboBox>
             <Label layoutX="75.0" layoutY="330.0" text="Maze Type" />
-         </children>
-      </Pane>
-      <Pane fx:id="instructionsPane" layoutX="31.0" layoutY="39.0" prefHeight="696.0" prefWidth="435.0" style="-fx-background-color: #fff;" styleClass="box">
-         <children>
-            <ImageView fitHeight="75.0" fitWidth="73.0" layoutX="174.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/door1.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="39.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/door2.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="308.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/door3.png" />
-               </image>
-            </ImageView>
-            <Label alignment="CENTER" layoutX="37.0" layoutY="175.0" prefHeight="73.0" prefWidth="354.0" text="There are 3 types of doors which decrease your tokens in the case of traditional or infernal and increment it in the case of golden doors." textAlignment="JUSTIFY" wrapText="true">
-               <font>
-                  <Font name="Comic Sans MS" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="172.0" layoutY="128.0" text="Doors">
-               <font>
-                  <Font name="Comic Sans MS" size="28.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="101.0" fitWidth="73.0" layoutX="42.0" layoutY="560.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/key.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="176.0" layoutY="560.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/poison.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="312.0" layoutY="557.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/treasure.png" />
-               </image>
-            </ImageView>
-            <Label alignment="CENTER" layoutX="43.0" layoutY="412.0" prefHeight="138.0" prefWidth="354.0" text="There are three types of rooms omitting the traditional one (without any type of added).The key room it is necessary to go through at least one to collect the key and be able to open the treasure padlock also the enchanted room will give you a clue." textAlignment="JUSTIFY" wrapText="true">
-               <font>
-                  <Font name="Comic Sans MS" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="173.0" layoutY="373.0" text="Rooms">
-               <font>
-                  <Font name="Comic Sans MS" size="28.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="37.0" layoutY="49.0" prefHeight="73.0" prefWidth="354.0" text="Hellish Maze is a video game that consists of finding the shortest path between different types of rooms to find the hidden treasure." textAlignment="JUSTIFY" wrapText="true">
-               <font>
-                  <Font name="Comic Sans MS" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="43.0" layoutY="652.0" text="Key Room">
-               <font>
-                  <Font name="Comic Sans MS Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="162.0" layoutY="652.0" text="Haunted Room">
-               <font>
-                  <Font name="Comic Sans MS Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="296.0" layoutY="652.0" text="Treasure Room">
-               <font>
-                  <Font name="Comic Sans MS Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="166.0" layoutY="346.0" text="Golden Door">
-               <font>
-                  <Font name="Comic Sans MS Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="37.0" layoutY="346.0" text="Silver Door">
-               <font>
-                  <Font name="Comic Sans MS Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="297.0" layoutY="346.0" text="Infernal Door">
-               <font>
-                  <Font name="Comic Sans MS Bold" size="14.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="41.0" fitWidth="50.0" layoutX="39.0" layoutY="8.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/back.png" />
-               </image>
-            </ImageView>
          </children>
       </Pane>
       <Pane fx:id="rpane2" layoutX="500.0" prefHeight="750.0" prefWidth="400.0" styleClass="right-pane3">

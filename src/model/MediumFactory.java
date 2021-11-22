@@ -1,7 +1,7 @@
 package model;
 
 import model.door.Door;
-import model.door.InfernalDoor;
+import model.door.GoldenDoor;
 import model.room.KeyRoom;
 import model.room.Room;
 
@@ -14,7 +14,7 @@ public class MediumFactory implements MazeFactory {
 
     @Override
     public Door createDoor() {
-        return new InfernalDoor();
+        return new GoldenDoor();
     }
 
 }

@@ -54,21 +54,19 @@ public abstract class Graph<V, E> implements IGraph<V, E> {
         distance[start] = 0;
 
         Queue<Integer> queue = new PriorityQueue<Integer>();
-
+        queue.add(distance[start]);
         for (int i = 0; i < vertex.size(); i++) {
             if (i != start) {
                 distance[i] = Integer.MAX_VALUE;
             }
             prev[i] = -1;
-
-            queue.add(distance[start]);
         }
 
         while (!queue.isEmpty()) {
             int u = queue.poll();
 
             for (int i = 0; i < vertex.size(); i++) {
-                if (adjacencyMatrix[u][i] != null && adjacencyMatrix[u][i] != 0) {
+                if (adjacencyMatrix[u][i] != null) {
                     int alt = distance[u] + adjacencyMatrix[u][i];
 
                     if (alt < distance[i]) {
@@ -106,17 +104,17 @@ public abstract class Graph<V, E> implements IGraph<V, E> {
     public int[][] floydWarshall() {
         int numVertex = adjacencyMatrix.length;
         int INF = Integer.MAX_VALUE;
-        int [][] path = new int[numVertex][numVertex];
-        int [][] dist = new int[numVertex][numVertex];
+        int[][] path = new int[numVertex][numVertex];
+        int[][] dist = new int[numVertex][numVertex];
 
         for (int i = 0; i < numVertex; i++) {
             for (int j = 0; j < numVertex; j++) {
-                if(adjacencyMatrix[i][j] != 0){
+                if (adjacencyMatrix[i][j] != 0) {
                     dist[i][j] = adjacencyMatrix[i][j];
                 } else {
                     dist[i][j] = INF;
                 }
-                if(i == j){
+                if (i == j) {
                     dist[i][j] = 0;
                 }
                 path[i][j] = j;
@@ -126,7 +124,7 @@ public abstract class Graph<V, E> implements IGraph<V, E> {
             for (int j = 0; j < numVertex; j++) {
                 for (int i = 0; i < numVertex; i++) {
                     int tmp = (dist[i][k] == INF || dist[k][j] == INF) ? INF : (dist[i][k] + dist[k][j]);
-                    if (dist[i][j] > tmp){
+                    if (dist[i][j] > tmp) {
                         dist[i][j] = tmp;
                         path[i][j] = path[i][k];
                     }

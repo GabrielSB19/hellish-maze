@@ -1,7 +1,7 @@
 package model;
 
 import model.door.Door;
-import model.door.GoldenDoor;
+import model.door.InfernalDoor;
 import model.room.*;
 
 public class HardFactory implements MazeFactory {
@@ -13,6 +13,6 @@ public class HardFactory implements MazeFactory {
 
     @Override
     public Door createDoor() {
-        return new GoldenDoor();
+        return new InfernalDoor();
     }
 }
