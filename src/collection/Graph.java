@@ -130,10 +130,8 @@ public abstract class Graph<V, E> implements IGraph<V, E> {
                         path[i][j] = path[i][k];
                     }
                 }
-
             }
         }
         return path[recent][numVertex-1];
     }
-
 }
