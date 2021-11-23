@@ -19,4 +19,9 @@ public class DirectedGraph<V, E> extends Graph<V, E> {
         searchVertex(source).addEdge(newEdge);
     }
 
+    @Override
+    public void fillMatrix(int i, int j, int token) {
+        adjacencyMatrix[i][j] = token;
+    }
+
 }

@@ -11,6 +11,9 @@ public abstract class Graph<V, E> implements IGraph<V, E> {
     public abstract void addEdge(E edge, V source, V destination);
 
     @Override
+    public abstract void fillMatrix(int i, int j, int token);
+
+    @Override
     public void addVertex(V vertex) {
         Vertex<V, E> v = new Vertex<V, E>(vertex);
         this.vertex.add(v);
@@ -31,11 +34,7 @@ public abstract class Graph<V, E> implements IGraph<V, E> {
         }
         return wanted;
     }
-
-    @Override
-    public void fillMatrix(int i, int j, int token) {
-        adjacencyMatrix[i][j] = token;
-    }
+    
 
     protected void initMatrix() {
         for (int i = 0; i < adjacencyMatrix.length; i++) {
