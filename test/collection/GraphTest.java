@@ -19,7 +19,11 @@ class GraphTest {
         return new UndirectedGraph<>(3);
     }
 
-    public void setUpScenary3(){
+    public UndirectedGraph<Room, Door> setUpScenary3(){
+        /*
+        Only declare the method but we do not initialize it
+         */
+        return new UndirectedGraph<>(3);
     }
 
     public void initGraph(Graph<Room, Door> graph){
@@ -209,5 +213,71 @@ class GraphTest {
         initGraph(graph);
 
         assertEquals(graph.getVertex(2).getData().getId(), graph.floydWarshall(1));
+    }
+
+    @Test
+    void addEdgeEm() {
+        UndirectedGraph<Room, Door> graph = setUpScenary3();
+        TraditionalRoom R1 = new TraditionalRoom(0);
+        TraditionalRoom R2 = new TraditionalRoom(1);
+        SilverDoor D1 = new SilverDoor();
+        graph.addVertex(R1);
+        graph.addVertex(R2);
+        graph.addEdge(D1, R1, R2);
+
+        assertNotNull(graph.getVertex(0).getEdges().get(0));
+    }
+
+    @Test
+    void addVertexEm() {
+        UndirectedGraph<Room, Door> graph = setUpScenary2();
+        TraditionalRoom R1 = new TraditionalRoom(0);
+        graph.addVertex(R1);
+
+        assertNotNull(graph.getVertex(0));
+    }
+
+    @Test
+    void getVertexEm() {
+        UndirectedGraph<Room, Door> graph = setUpScenary2();
+        initGraph(graph);
+        assertNotNull(graph.getVertex(0));
+    }
+
+    @Test
+    void searchVertexEm() {
+        UndirectedGraph<Room, Door> graph = setUpScenary3();
+        Vertex<Room, Door> test = graph.searchVertex(new TraditionalRoom(0));
+        assertNull(test);
+    }
+
+    @Test
+    void dijkstraEm() {
+        UndirectedGraph<Room, Door> graph = setUpScenary3();
+        graph.addVertex(new TraditionalRoom(0));
+        assertEquals(0, graph.dijkstra(0));
+    }
+
+    @Test
+    void getPathEm() {
+        UndirectedGraph<Room, Door> graph = setUpScenary3();
+        graph.addVertex(new TraditionalRoom(0));
+        graph.dijkstra(0);
+        System.out.println(graph.getPath());
+        /*
+        When no paths are available, the algorithm will show [-1, 0].
+         */
+        assertEquals("[-1, 0]", graph.getPath());
+    }
+
+    @Test
+    void floydWarshallEm() {
+        UndirectedGraph<Room, Door> graph = setUpScenary3();
+        graph.addVertex(new TraditionalRoom(0));
+        /*
+        The shortest way is the same
+         */
+        assertNotNull(graph.getPath());
+
     }
 }
