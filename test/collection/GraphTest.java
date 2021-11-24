@@ -37,8 +37,8 @@ class GraphTest {
         graph.addVertex(R3);
         graph.addEdge(D1, R1, R2);
         graph.addEdge(D2, R2, R3);
-        graph.fillMatrix(0, 1, D1.getToken());
-        graph.fillMatrix(1, 2, D2.getToken());
+        graph.fillMatrix(R1.getId(), R2.getId(), D1.getToken());
+        graph.fillMatrix(R2.getId(), R3.getId(), D2.getToken());
     }
 
     @Test
@@ -193,7 +193,7 @@ class GraphTest {
         initGraph(graph);
         int dist = graph.dijkstra(0);
         int token1 = (graph.getVertex(0).getEdges().get(0).getData().getToken());
-        int token2 = (graph.getVertex(1).getEdges().get(0).getData().getToken());
+        int token2 = (graph.getVertex(1).getEdges().get(1).getData().getToken());
         int tokens = token1+token2;
         assertEquals(tokens, dist);
     }
