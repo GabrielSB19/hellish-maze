@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXProgressBar?>
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -14,6 +15,108 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="900.0" styleClass="mainPane" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <Pane fx:id="gamePane" layoutX="31.0" layoutY="38.0" prefHeight="696.0" prefWidth="435.0" styleClass="box" stylesheets="@../styles/main.css">
+         <children>
+            <Label layoutX="62.0" layoutY="379.0" text="Can you beat us?">
+               <font>
+                  <Font name="Comic Sans MS" size="40.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="64.0" fitWidth="68.0" layoutX="186.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/maze.png" />
+               </image>
+            </ImageView>
+            <JFXButton layoutX="91.0" layoutY="448.0" onAction="#easy" prefHeight="64.0" prefWidth="253.0" styleClass="btn-flash" text="Easy">
+               <font>
+                  <Font name="Comic Sans MS" size="30.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="91.0" layoutY="536.0" onAction="#medium" prefHeight="62.0" prefWidth="253.0" styleClass="btn-flash" text="Medium">
+               <font>
+                  <Font name="Comic Sans MS" size="30.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="91.0" layoutY="620.0" onAction="#hard" prefHeight="62.0" prefWidth="253.0" styleClass="btn-flash" text="Hard">
+               <font>
+                  <Font name="Comic Sans MS" size="30.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="29.0" layoutY="113.0" text="Chooose your avatar">
+               <font>
+                  <Font name="Comic Sans MS" size="40.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="64.0" fitWidth="68.0" layoutX="35.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/avatar/1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="64.0" fitWidth="68.0" layoutX="132.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/avatar/2.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="64.0" fitWidth="68.0" layoutX="236.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/avatar/3.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="64.0" fitWidth="68.0" layoutX="323.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/avatar/4.png" />
+               </image>
+            </ImageView>
+            <JFXRadioButton fx:id="rAlchemy" layoutX="35.0" layoutY="272.0" text="Alchemy">
+               <font>
+                  <Font name="Comic Sans MS" size="13.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="avatar" />
+               </toggleGroup>
+            </JFXRadioButton>
+            <JFXRadioButton fx:id="rBarbarian" layoutX="132.0" layoutY="272.0" text="Barbarian" toggleGroup="$avatar">
+               <font>
+                  <Font name="Comic Sans MS" size="13.0" />
+               </font>
+            </JFXRadioButton>
+            <JFXRadioButton fx:id="rDruid" layoutX="237.0" layoutY="272.0" text="Druid" toggleGroup="$avatar">
+               <font>
+                  <Font name="Comic Sans MS" size="13.0" />
+               </font>
+            </JFXRadioButton>
+            <JFXRadioButton fx:id="rSamurai" layoutX="323.0" layoutY="272.0" text="Samurai" toggleGroup="$avatar">
+               <font>
+                  <Font name="Comic Sans MS" size="13.0" />
+               </font>
+            </JFXRadioButton>
+            <ImageView fitHeight="46.0" fitWidth="41.0" layoutX="31.0" layoutY="37.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/back.png" />
+               </image>
+            </ImageView>
+            <JFXComboBox fx:id="cbType" labelFloat="true" layoutX="186.0" layoutY="326.0" prefHeight="27.0" prefWidth="198.0" promptText="Choose Your Type">
+               <focusColor>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#088a33" />
+                        <Stop color="#a80404" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </focusColor>
+               <unFocusColor>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#9a0505" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </unFocusColor>
+            </JFXComboBox>
+            <Label layoutX="75.0" layoutY="330.0" text="Maze Type" />
+            <JFXProgressBar fx:id="progress" layoutX="118.0" layoutY="112.0" visible="false" />
+         </children>
+      </Pane>
       <Pane fx:id="instructionsPane" layoutX="31.0" layoutY="39.0" prefHeight="696.0" prefWidth="435.0" style="-fx-background-color: #fff;" styleClass="box">
          <children>
             <ImageView fitHeight="75.0" fitWidth="73.0" layoutX="174.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
@@ -116,107 +219,6 @@
                   <Font name="Comic Sans MS Bold" size="14.0" />
                </font>
             </Label>
-         </children>
-      </Pane>
-      <Pane fx:id="gamePane" layoutX="31.0" layoutY="38.0" prefHeight="696.0" prefWidth="435.0" styleClass="box" stylesheets="@../styles/main.css">
-         <children>
-            <Label layoutX="62.0" layoutY="379.0" text="Can you beat us?">
-               <font>
-                  <Font name="Comic Sans MS" size="40.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="64.0" fitWidth="68.0" layoutX="186.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/maze.png" />
-               </image>
-            </ImageView>
-            <JFXButton layoutX="91.0" layoutY="448.0" onAction="#easy" prefHeight="64.0" prefWidth="253.0" styleClass="btn-flash" text="Easy">
-               <font>
-                  <Font name="Comic Sans MS" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton layoutX="91.0" layoutY="536.0" onAction="#medium" prefHeight="62.0" prefWidth="253.0" styleClass="btn-flash" text="Medium">
-               <font>
-                  <Font name="Comic Sans MS" size="30.0" />
-               </font>
-            </JFXButton>
-            <JFXButton layoutX="91.0" layoutY="620.0" onAction="#hard" prefHeight="62.0" prefWidth="253.0" styleClass="btn-flash" text="Hard">
-               <font>
-                  <Font name="Comic Sans MS" size="30.0" />
-               </font>
-            </JFXButton>
-            <Label layoutX="29.0" layoutY="113.0" text="Chooose your avatar">
-               <font>
-                  <Font name="Comic Sans MS" size="40.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="64.0" fitWidth="68.0" layoutX="35.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/avatar/1.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="64.0" fitWidth="68.0" layoutX="132.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/avatar/2.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="64.0" fitWidth="68.0" layoutX="236.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/avatar/3.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="64.0" fitWidth="68.0" layoutX="323.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/avatar/4.png" />
-               </image>
-            </ImageView>
-            <JFXRadioButton fx:id="rAlchemy" layoutX="35.0" layoutY="272.0" text="Alchemy">
-               <font>
-                  <Font name="Comic Sans MS" size="13.0" />
-               </font>
-               <toggleGroup>
-                  <ToggleGroup fx:id="avatar" />
-               </toggleGroup>
-            </JFXRadioButton>
-            <JFXRadioButton fx:id="rBarbarian" layoutX="132.0" layoutY="272.0" text="Barbarian" toggleGroup="$avatar">
-               <font>
-                  <Font name="Comic Sans MS" size="13.0" />
-               </font>
-            </JFXRadioButton>
-            <JFXRadioButton fx:id="rDruid" layoutX="237.0" layoutY="272.0" text="Druid" toggleGroup="$avatar">
-               <font>
-                  <Font name="Comic Sans MS" size="13.0" />
-               </font>
-            </JFXRadioButton>
-            <JFXRadioButton fx:id="rSamurai" layoutX="323.0" layoutY="272.0" text="Samurai" toggleGroup="$avatar">
-               <font>
-                  <Font name="Comic Sans MS" size="13.0" />
-               </font>
-            </JFXRadioButton>
-            <ImageView fitHeight="46.0" fitWidth="41.0" layoutX="31.0" layoutY="37.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/back.png" />
-               </image>
-            </ImageView>
-            <JFXComboBox fx:id="cbType" labelFloat="true" layoutX="186.0" layoutY="326.0" prefHeight="27.0" prefWidth="198.0" promptText="Choose Your Type">
-               <focusColor>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#088a33" />
-                        <Stop color="#a80404" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </focusColor>
-               <unFocusColor>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#9a0505" />
-                        <Stop color="WHITE" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </unFocusColor>
-            </JFXComboBox>
-            <Label layoutX="75.0" layoutY="330.0" text="Maze Type" />
          </children>
       </Pane>
       <Pane fx:id="rpane2" layoutX="500.0" prefHeight="750.0" prefWidth="400.0" styleClass="right-pane3">

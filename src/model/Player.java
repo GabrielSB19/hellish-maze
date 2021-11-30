@@ -31,7 +31,7 @@ public class Player {
         this.winner = winner;
     }
 
-    public int getIdRoom() {
+    public synchronized int getIdRoom() {
         return this.idRoom;
     }
 
@@ -39,7 +39,7 @@ public class Player {
         this.idRoom = idRoom;
     }
 
-    public int getTokens() {
+    public synchronized int getTokens() {
         return this.tokens;
     }
 

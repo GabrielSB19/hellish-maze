@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import model.Maze;
 import model.Player;
 import routes.Route;
+import thread.Observer;
 
 public class MazeController {
 
@@ -102,33 +103,36 @@ public class MazeController {
         new FadeIn(rpane1).play();
         rpane1.toFront();
         cbType.getItems().clear();
-        cbType.getItems().addAll("Directed","Undirected");
+        cbType.getItems().addAll("Directed", "Undirected");
     }
 
     @FXML
     public void easy(ActionEvent event) {
         if (avatar.getSelectedToggle() != null && cbType.getSelectionModel().getSelectedItem() != null) {
-            bController = new BoardController(this, hasAvatar(),mazeType());
+            bController = new BoardController(this, hasAvatar(), mazeType());
             renderScreen(Route.BOARD);
-            bController.easyBoard();
+            Observer obs = new Observer(bController, 1);
+            obs.init();
         }
     }
 
     @FXML
     public void medium(ActionEvent event) {
         if (avatar.getSelectedToggle() != null && cbType.getSelectionModel().getSelectedItem() != null) {
-            bController = new BoardController(this, hasAvatar(),mazeType());
+            bController = new BoardController(this, hasAvatar(), mazeType());
             renderScreen(Route.BOARD);
-            bController.mediumBoard();
+            Observer obs = new Observer(bController, 2);
+            obs.init();
         }
     }
 
     @FXML
     public void hard(ActionEvent event) {
         if (avatar.getSelectedToggle() != null && cbType.getSelectionModel().getSelectedItem() != null) {
-            bController = new BoardController(this, hasAvatar(),mazeType());
+            bController = new BoardController(this, hasAvatar(), mazeType());
             renderScreen(Route.BOARD);
-            bController.hardBoard();
+            Observer obs = new Observer(bController, 3);
+            obs.init();
         }
     }
 
@@ -147,7 +151,7 @@ public class MazeController {
     private boolean mazeType() {
         if (cbType.getSelectionModel().getSelectedItem().equals("Directed")) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -179,12 +183,12 @@ public class MazeController {
 
     private Object setController(Route route) {
         switch (route) {
-        case WELCOME:
-            return this;
-        case BOARD:
-            return bController;
-        default:
-            return null;
+            case WELCOME:
+                return this;
+            case BOARD:
+                return bController;
+            default:
+                return null;
         }
     }
 }

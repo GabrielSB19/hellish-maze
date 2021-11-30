@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 
+import com.jfoenix.controls.JFXProgressBar;
 import com.jfoenix.controls.JFXTextArea;
 
 import javafx.collections.ObservableList;
@@ -46,10 +47,16 @@ public class BoardController {
     private Text lblPlayerState;
 
     @FXML
+    private Label lblTime;
+
+    @FXML
     private JFXTextArea path;
 
     @FXML
     private ImageView key;
+
+    @FXML
+    public JFXProgressBar progress;
 
     private MazeController mController;
     private Player player;
@@ -67,12 +74,28 @@ public class BoardController {
         this.type = type;
     }
 
+    public int getEndPoint() {
+        return endPoint;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void decreaseTime() {
+        int currentTime = Integer.valueOf(lblTime.getText());
+        if(currentTime!=0){
+            lblTime.setText((currentTime - 1) + "");
+        }
+    }
+
     public void easyBoard() {
         endPoint = 3;
         mController.getMaze().createGraph(EASY_V, type);
         createRooms(EASY_V, 1);
         createDoors(endPoint, 1);
         createBoard(EASY_V, "green");
+        lblTime.setText(EASY_V + "");
         setPlayer();
     }
 
@@ -82,6 +105,7 @@ public class BoardController {
         createRooms(MEDIUM_V, 2);
         createDoors(endPoint, 2);
         createBoard(MEDIUM_V, "blue");
+        lblTime.setText(MEDIUM_V + "");
         setPlayer();
     }
 
@@ -91,6 +115,7 @@ public class BoardController {
         createRooms(HARD_V, 3);
         createDoors(endPoint, 3);
         createBoard(HARD_V, "red");
+        lblTime.setText(HARD_V + "");
         setPlayer();
     }
 
@@ -279,44 +304,44 @@ public class BoardController {
         int cost = 0;
         GridPane temp = (GridPane) board.getChildren().get(recentId);
         switch (event.getCode()) {
-        case UP:
-            if (getNodeByRowColumnIndex(0, 2, temp) != null) {
-                player.setIdRoom(recentId - endPoint);
-                temp.getChildren().remove(getNodeByRowColumnIndex(1, 1, temp));
-                Label n = (Label) getNodeByRowColumnIndex(0, 2, temp);
-                cost = Integer.parseInt(n.getText());
-                setTokens(cost);
-            }
-            break;
-        case DOWN:
-            if (getNodeByRowColumnIndex(3, 2, temp) != null) {
-                player.setIdRoom(recentId + endPoint);
-                temp.getChildren().remove(getNodeByRowColumnIndex(1, 1, temp));
-                Label n = (Label) getNodeByRowColumnIndex(3, 2, temp);
-                cost = Integer.parseInt(n.getText());
-                setTokens(cost);
-            }
-            break;
-        case RIGHT:
-            if (getNodeByRowColumnIndex(2, 3, temp) != null) {
-                player.setIdRoom(recentId + 1);
-                temp.getChildren().remove(getNodeByRowColumnIndex(1, 1, temp));
-                Label n = (Label) getNodeByRowColumnIndex(2, 3, temp);
-                cost = Integer.parseInt(n.getText());
-                setTokens(cost);
-            }
-            break;
-        case LEFT:
-            if (getNodeByRowColumnIndex(2, 0, temp) != null) {
-                player.setIdRoom(recentId - 1);
-                temp.getChildren().remove(getNodeByRowColumnIndex(1, 1, temp));
-                Label n = (Label) getNodeByRowColumnIndex(2, 0, temp);
-                cost = Integer.parseInt(n.getText());
-                setTokens(cost);
-            }
-            break;
-        default:
-            break;
+            case UP:
+                if (getNodeByRowColumnIndex(0, 2, temp) != null) {
+                    player.setIdRoom(recentId - endPoint);
+                    temp.getChildren().remove(getNodeByRowColumnIndex(1, 1, temp));
+                    Label n = (Label) getNodeByRowColumnIndex(0, 2, temp);
+                    cost = Integer.parseInt(n.getText());
+                    setTokens(cost);
+                }
+                break;
+            case DOWN:
+                if (getNodeByRowColumnIndex(3, 2, temp) != null) {
+                    player.setIdRoom(recentId + endPoint);
+                    temp.getChildren().remove(getNodeByRowColumnIndex(1, 1, temp));
+                    Label n = (Label) getNodeByRowColumnIndex(3, 2, temp);
+                    cost = Integer.parseInt(n.getText());
+                    setTokens(cost);
+                }
+                break;
+            case RIGHT:
+                if (getNodeByRowColumnIndex(2, 3, temp) != null) {
+                    player.setIdRoom(recentId + 1);
+                    temp.getChildren().remove(getNodeByRowColumnIndex(1, 1, temp));
+                    Label n = (Label) getNodeByRowColumnIndex(2, 3, temp);
+                    cost = Integer.parseInt(n.getText());
+                    setTokens(cost);
+                }
+                break;
+            case LEFT:
+                if (getNodeByRowColumnIndex(2, 0, temp) != null) {
+                    player.setIdRoom(recentId - 1);
+                    temp.getChildren().remove(getNodeByRowColumnIndex(1, 1, temp));
+                    Label n = (Label) getNodeByRowColumnIndex(2, 0, temp);
+                    cost = Integer.parseInt(n.getText());
+                    setTokens(cost);
+                }
+                break;
+            default:
+                break;
         }
     }
 
@@ -361,16 +386,22 @@ public class BoardController {
         }
     }
 
-    private void isWinner() {
-        if (player.getTokens() < 0) {
-            player.setWinner(true);
+    private void loadStage() {
+        if (modal == null) {
             modal = loadModal(Route.MODAL);
             modal.show();
+        }
+    }
+
+    public synchronized void isWinner() {
+        if (player.getTokens() < 0 || lblTime.getText().equals("0")) {
+            player.setWinner(true);
+            loadStage();
             lblPlayerState.setText("!Loser!");
             path.setText(mController.getMaze().getPath());
         } else if (player.getIdRoom() == board.getChildren().size() - 1) {
-            modal = loadModal(Route.MODAL);
-            modal.show();
+            player.setWinner(true);
+            loadStage();
             lblPlayerState.setText((player.isHasKey()) ? "!Winner with Key!" : "!Winner!");
             path.setText(mController.getMaze().getPath());
         }

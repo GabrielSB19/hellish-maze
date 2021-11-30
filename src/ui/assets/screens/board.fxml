@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXProgressBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -14,25 +16,28 @@
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
+         <columnConstraints>
+            <ColumnConstraints />
+         </columnConstraints>
       </GridPane>
       <Pane layoutX="309.0" layoutY="8.0" prefHeight="32.0" prefWidth="281.0" styleClass="box">
          <children>
-            <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="47.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="47.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/cryptocurrency.png" />
                </image>
             </ImageView>
-            <Label fx:id="lblTokens" layoutX="82.0" layoutY="-1.0" text="13">
+            <Label fx:id="lblTokens" layoutX="82.0" layoutY="-2.0" text="0">
                <font>
                   <Font name="Comic Sans MS" size="22.0" />
                </font>
             </Label>
-            <ImageView fitHeight="22.0" fitWidth="23.0" layoutX="212.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="22.0" fitWidth="23.0" layoutX="212.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/traditional.png" />
                </image>
             </ImageView>
-            <Label fx:id="lblRooms" layoutX="175.0" layoutY="-1.0" text="13">
+            <Label fx:id="lblRooms" layoutX="175.0" layoutY="-2.0" text="0">
                <font>
                   <Font name="Comic Sans MS" size="22.0" />
                </font>
@@ -49,5 +54,16 @@
             <Image url="@../images/maze.png" />
          </image>
       </ImageView>
+      <Label fx:id="lblTime" layoutX="817.0" layoutY="7.0" text="0" textFill="#9e0505">
+         <font>
+            <Font name="Comic Sans MS" size="22.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="22.0" fitWidth="23.0" layoutX="781.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/hourglass.png" />
+         </image>
+      </ImageView>
+      <JFXProgressBar fx:id="progress" layoutX="283.0" layoutY="67.0" prefHeight="4.0" prefWidth="332.0" />
    </children>
 </Pane>
