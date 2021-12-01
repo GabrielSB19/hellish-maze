@@ -27,6 +27,7 @@ class MazeTest {
 
     @Test
     void addRoom() {
+        setUpScenary1();
         Room room1 = new TraditionalRoom(0);
         Room room2 = new KeyRoom(1);
         Room room3 = new EnchantedRoom(2);
@@ -38,6 +39,7 @@ class MazeTest {
 
     @Test
     void addDoor() {
+        setUpScenary1();
         Door door1 = new SilverDoor();
         Door door2 = new GoldenDoor();
         Door door3 = new InfernalDoor();
@@ -49,6 +51,7 @@ class MazeTest {
 
     @Test
     void setTreasure() {
+        setUpScenary1();
         TraditionalRoom room1 = new TraditionalRoom(2);
         room1.setTreasure(true);
 
